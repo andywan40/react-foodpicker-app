@@ -24,7 +24,8 @@ const styles = {
     },
     
   },
-  restaurantIcon: {
+  icon: {
+    color: "inherit",
     cursor: "pointer",
     fontSize: "2.5rem",
     "&:hover": {

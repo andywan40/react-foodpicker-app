@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/styles";
 import RestaurantIcon from "@material-ui/icons/Restaurant";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import foods from "../helperFunctions/foods";
 import { getRandomItem } from "../helperFunctions/random";
 import { getLuminance } from "../helperFunctions/colorHelpers";
@@ -13,6 +14,7 @@ function Home(props) {
   const { classes } = props;
   const [cuisine, setCuisine] = useState("");
   const [dish, setDish] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [bgImg, setBgImg] = useState({
     url: background,
     luminance: 1,
@@ -22,25 +24,27 @@ function Home(props) {
   });
 
   const getFood = async () => {
+    setIsLoading(true);
     const item = getRandomItem(foods);
     const cuisine = item.cuisine;
     const dish = getRandomItem(item.dishes);
-    try{
-        const data = await getDishPhoto(dish);
+    try {
+      const data = await getDishPhoto(dish);
+      dealWithPhotoData(data);
+    } catch (e) {
+      try {
+        const data = await getCuisinePhoto(cuisine);
         dealWithPhotoData(data);
-    }catch(e){
-        try{
-            const data = await getCuisinePhoto(cuisine);
-            dealWithPhotoData(data);
-        } catch(e){
-            setBgImg({ url: background, luminance: 1, desc: "", user: "" });
-        }  
+      } catch (e) {
+        setBgImg({ url: background, luminance: 1, desc: "", user: "" });
+      }
     }
     setCuisine(cuisine);
     setDish(dish);
+    setIsLoading(false);
   };
 
-  const dealWithPhotoData = res => {
+  const dealWithPhotoData = (res) => {
     const photos = res.results;
     //const photo = photos[0];
     const photo = getRandomItem(photos);
@@ -51,7 +55,7 @@ function Home(props) {
       user: photo.user.name,
       username: photo.user.username,
     });
-  }
+  };
 
   const textColor = bgImg.luminance < 0.725 ? "white" : "black"; //luminacne is 1 => bg is white, text should be dark
   const styles = {
@@ -75,11 +79,17 @@ function Home(props) {
     },
   };
 
+  const icon = isLoading ? (
+    <CircularProgress className={classes.icon} />
+  ) : (
+    <RestaurantIcon className={classes.icon} onClick={getFood} />
+  );
+
   return (
     <div className={classes.Home} style={styles}>
       <div>
         <h1 className={classes.title}>What To Eat?</h1>
-        <RestaurantIcon className={classes.restaurantIcon} onClick={getFood} />
+        {icon}
       </div>
       <div className={classes.result}>
         <Link to={cuisineObj} className={classes.link}>

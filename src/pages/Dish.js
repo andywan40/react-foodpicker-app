@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/styles";
 import styles from "../styles/DishStyles";
 
 function Dish(props) {
-  console.log(props);
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const dish = props.match.params.dish;
@@ -15,9 +14,9 @@ function Dish(props) {
     window.open(`https://www.google.com/search?q=${dish}+near+me`);
   };
   const goBackLink = `/${cuisine}`;
-  const usernameLink = `https://unsplash.com/@${dishInfo.username}?utm_source=myapp&utm_medium=referral`;
+  const usernameLink = `https://unsplash.com/@${dishInfo.username}?utm_source=foodpickerapp&utm_medium=referral`;
   const unsplashLink =
-    "https://unsplash.com/?utm_source=myapp&utm_medium=referral";
+    "https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral";
   return (
     <div className={classes.root}>
       <div className={classes.contentContainer}>
