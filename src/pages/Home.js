@@ -19,6 +19,9 @@ function Home(props) {
     setCuisine(cuisine);
     setDish(dish);
   };
+  const handleSearch = item => {
+    window.open(`https://www.google.com/search?q=${item}+near+me`);
+  }
   return (
     <div className={classes.Home}>
       <div>
@@ -26,8 +29,8 @@ function Home(props) {
         <RestaurantIcon className={classes.restaurantIcon} onClick={handleClick}/>
       </div>
       <div className={classes.result}>
-        <h3>{cuisine}</h3>
-        <h4>{dish}</h4>
+        <h3 onClick={ () => handleSearch(cuisine)}>{cuisine}</h3>
+        <h4 onClick={ () => handleSearch(dish)}>{dish}</h4>
       </div>
     </div>
   );

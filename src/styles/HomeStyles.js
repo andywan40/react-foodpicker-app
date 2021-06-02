@@ -29,6 +29,9 @@ export default {
     }
   },
   result: {
-      marginTop: "2rem"
+      marginTop: "2rem",
+      "&:hover":{
+        cursor: "pointer"
+    },
   }
 };

@@ -1,3 +1,5 @@
+
+//TODO move this to backend
 export default [
   {
     cuisine: "Japanese",
@@ -38,7 +40,7 @@ export default [
   },
   {
     cuisine: "Chinese",
-    dishes: [],
+    dishes: ["Hotpot", "Sichuan Pork", "Braised Pork Balls in Gravy", "Dumplings", "Chow Mein", "Peking Roasted Duck"],
   },
   {
     cuisine: "Indian",
@@ -46,7 +48,7 @@ export default [
   },
   {
     cuisine: "Greek",
-    dishes: [],
+    dishes: ["Taramasalata", "Moussaka"],
   },
   {
     cuisine: "Italian",
@@ -58,6 +60,6 @@ export default [
   },
   {
     cuisine: "Thai",
-    dishes: [],
+    dishes: ["Guay Teow (Noodle Soup)", "Tom Yum Goong (Spicy Shrimp Soup)"],
   },
 ];
