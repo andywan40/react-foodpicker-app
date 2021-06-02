@@ -1,0 +1,63 @@
+export default [
+  {
+    cuisine: "Japanese",
+    dishes: [
+      "Sushi",
+      "Udon",
+      "Tofu",
+      "Tempura",
+      "Yakitori",
+      "Sashimi",
+      "Ramen",
+      "Donburi",
+      "Natto",
+      "Oden",
+      "Tamagoyaki",
+      "Soba",
+      "Tonkatsu",
+      "Kashipan",
+      "Sukiyaki",
+      "Miso Soup",
+      "Okonomiyaki",
+      "Mentaiko",
+      "Nikujaga",
+      "Curry Rice",
+      "Unagi no Kabayaki",
+      "Shabu Shabu",
+      "Onigiri",
+      "Gyoza",
+      "Takoyaki",
+      "Kaiseki Ryori",
+      "Edamame",
+      "Yakisoba",
+    ],
+  },
+  {
+    cuisine: "American",
+    dishes: ["Hamburger"],
+  },
+  {
+    cuisine: "Chinese",
+    dishes: [],
+  },
+  {
+    cuisine: "Indian",
+    dishes: ["Curry"],
+  },
+  {
+    cuisine: "Greek",
+    dishes: [],
+  },
+  {
+    cuisine: "Italian",
+    dishes: ["Pasta"],
+  },
+  {
+    cuisine: "Mexican",
+    dishes: ["Tacos"],
+  },
+  {
+    cuisine: "Thai",
+    dishes: [],
+  },
+];
