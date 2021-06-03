@@ -10,29 +10,37 @@ const styles = {
     backgroundRepeat: "no-repeat",
     backgroundSize: "100vw 120vh",
   },
-  button: {
-    
-  },
+  button: {},
   title: {
     fontFamily: "'Bebas Neue', cursive",
     fontSize: "4rem",
-    marginBottom: "1rem"
+    marginBottom: "1rem",
   },
   restaurantIcon: {
     cursor: "pointer",
     fontSize: "2.5rem",
-    "&:hover":{
-        fontSize: "2.6rem"
+    "&:hover": {
+      fontSize: "2.6rem",
     },
-    "&:active":{
-        transform: "translateY(4px)"
-    }
+    "&:active": {
+      transform: "translateY(4px)",
+    },
   },
   result: {
-      marginTop: "2rem",
-      "&:hover":{
-        cursor: "pointer"
+    marginTop: "2rem",
+  },
+  cuisine: {
+    "&:hover": {
+        cursor: "pointer",
+        textDecoration: "underline",
+    },
+  },
+  dish: {
+    "&:hover": {
+        cursor: "pointer",
+        textDecoration: "underline",
     },
   }
+  
 };
 export default styles;

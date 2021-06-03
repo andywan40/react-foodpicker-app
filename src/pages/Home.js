@@ -6,6 +6,7 @@ import RestaurantIcon from "@material-ui/icons/Restaurant";
 import styles from "../styles/HomeStyles";
 import foods from "../helperFunctions/foods";
 import { getRandomItem } from "../helperFunctions/random";
+import { getLuminance } from "../helperFunctions/colorHelpers";
 import background from "../images/homebg.jpg";
 
 //TODO change text color depending on background darkness
@@ -13,52 +14,71 @@ function Home(props) {
   const { classes } = props;
   const [cuisine, setCuisine] = useState("");
   const [dish, setDish] = useState("");
-  const [bgImg, setBgImg] = useState(background);
+  const [bgImg, setBgImg] = useState({url: background, luminance: 1});
   const key = "v0QNKQFmkR9rzeGbt9wHp6CL1Ow4cJLBlCJOHS1X9vE";
   const baseUrl = "https://api.unsplash.com";
-  const handleClick = () => {
+  const getFood = () => {
     //call api
     const item = getRandomItem(foods);
     const cuisine = item.cuisine;
     const dishes = item.dishes;
     const dish = getRandomItem(dishes);
+    getDishPhoto(dish, cuisine);
     setCuisine(cuisine);
     setDish(dish);
-    getPhoto(dish);
+    
   };
+
   const handleSearch = (item) => {
     window.open(`https://www.google.com/search?q=${item}+near+me`);
   };
-  const getPhoto = async (dish) => {
-    let url = `${baseUrl}/search/photos?query=${dish}&client_id=${key}`;
-    let data = await axios.get(url);
-    let photos = data.data.results;
-    let photo;
-    if (photos.length !== 0){
-        photo = getRandomItem(photos).urls.regular;
-    }else{
-        url = `${baseUrl}/search/photos?query=${cuisine}&client_id=${key}`;
-        data = await axios.get(url);
-        photos = data.data.results;
-        photo = getRandomItem(photos).urls.regular;
+
+  const getDishPhoto = async (dish, cuisine) => {
+    const url = `${baseUrl}/search/photos?query=${dish}&client_id=${key}`;
+    try{
+        const data = await axios.get(url);
+        const photos = data.data.results;
+        const photo = getRandomItem(photos);
+        setBgImg({url: photo.urls.regular, luminance: getLuminance(photo.color)});
+    }catch(e){
+        getCuisinePhoto(cuisine);
     }
-    console.log(photos)
-    setBgImg(photo);
+  }
+
+  const getCuisinePhoto = async (cuisine) => {
+    const url = `${baseUrl}/search/photos?query=${cuisine}-food&client_id=${key}`;
+    try{
+        const data = await axios.get(url);
+        const photos = data.data.results;
+        const photo = getRandomItem(photos);
+        setBgImg({url: photo.urls.regular, luminance: getLuminance(photo.color)});
+    }catch(e){
+        setBgImg({url: background, luminance: 1});
+    }
+  }
+  
+  const textColor = bgImg.luminance < 0.75 ? "white": "black"; //luminacne is 1 => bg is white, text should be dark
+  const styles ={
+      backgroundImage: `url(${bgImg.url})`,
+      color: textColor,
+      textShadow: "2px 2px grey"
   };
+
+  //style={{backgroundImage: `url(${bgImg.url})`, color: textColor, textShadow: "2px 2px grey"}}
   return (
-    <div className={classes.Home} style={{backgroundImage: `url(${bgImg})`}}>
+    <div className={classes.Home} style={styles}>
       <div>
         <h1 className={classes.title}>What To Eat?</h1>
         <RestaurantIcon
           className={classes.restaurantIcon}
-          onClick={handleClick}
+          onClick={getFood}
         />
       </div>
       <div className={classes.result}>
-        <h3 onClick={() => handleSearch(cuisine)}>{cuisine}</h3>
-        <h4 onClick={() => handleSearch(dish)}>{dish}</h4>
+        <h2 className={classes.cuisine} onClick={() => handleSearch(cuisine)}>{cuisine}</h2>
+        <h3 className={classes.dish} onClick={() => handleSearch(dish)}>{dish}</h3>
       </div>
-      {/* <img src={bgImg} alt="pic" width="100" height="100" /> */}
+      {/* <img src={bgImg} alt="pic" width="150" height="150" /> */}
       
     </div>
   );
