@@ -1,6 +1,6 @@
 
 //TODO move this to backend
-export default [
+const foods = [
   {
     cuisine: "Japanese",
     dishes: [
@@ -63,3 +63,5 @@ export default [
     dishes: ["Guay Teow (Noodle Soup)", "Tom Yum Goong (Spicy Shrimp Soup)"],
   },
 ];
+
+export default foods;

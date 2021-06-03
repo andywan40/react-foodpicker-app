@@ -1,5 +1,5 @@
 import background from "../images/homebg.jpg";
-export default {
+const styles = {
   Home: {
     height: "100vh",
     display: "flex",
@@ -35,3 +35,4 @@ export default {
     },
   }
 };
+export default styles;
