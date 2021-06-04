@@ -27,7 +27,11 @@ const styles = {
     },
   },
   result: {
-    marginTop: "2rem",
+    marginTop: "2rem"
+  },
+  link: {
+    textDecoration: "none",
+    color: "inherit"
   },
   cuisine: {
     "&:hover": {
