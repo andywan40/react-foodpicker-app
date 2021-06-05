@@ -7,7 +7,7 @@ import { key, baseUrl } from "../helperFunctions/data";
 import styles from "../styles/CuisineStyles";
 
 function Cuisine(props) {
-    console.log(props)
+  console.log(props);
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const [dishes, setDishes] = useState([]);
@@ -15,7 +15,7 @@ function Cuisine(props) {
   const [totalPages, setTotalPages] = useState(10000);
   const canLoadMore = currentPage < totalPages;
   useEffect(() => {
-      console.log("run")
+    console.log("run");
     //call api
     getCuisinePhotos();
   }, []);
@@ -29,7 +29,8 @@ function Cuisine(props) {
       let newDishes = [...dishes, ...photos];
       setDishes(newDishes);
       setCurrentPage(currentPage + 1);
-      if(data.data["total_pages"] !== totalPages) setTotalPages(data.data["total_pages"]);
+      if (data.data["total_pages"] !== totalPages)
+        setTotalPages(data.data["total_pages"]);
     } catch (e) {
       console.log(e);
       setDishes([]);
@@ -49,25 +50,45 @@ function Cuisine(props) {
         <div className={classes.gridContainer}>
           {dishes.map((dish) => {
             return (
-              <div className={classes.imageContainer} key={dish["id"]}>
+              <Link
+                className={classes.imageContainer}
+                key={dish["id"]}
+                to={{
+                  pathname: `/dish/${dish["alt_description"]}`,
+                  dishProps: {
+                    dishInfo: { 
+                        url: dish.urls.regular,
+                        luminance: 1,
+                        desc: dish["alt_description"],
+                        user: dish.user.name,
+                        username: dish.user.username
+                    },
+                    cuisine: cuisine,
+                  },
+                }}
+              >
                 <img
                   className={classes.dishImg}
                   src={dish.urls.regular}
-                  alt={dish["alt_description"]}
+                  alt={dish.description}
                 />
-                <div className={classes.dishImgText}>{dish["alt_description"]}</div>
-              </div>
+                <div className={classes.dishImgText}>
+                  {dish["alt_description"]}
+                </div>
+              </Link>
             );
           })}
         </div>
         <div>
-          <button className={classes.button1} onClick={getCuisinePhotos} disabled={!canLoadMore}>
+          <button
+            className={classes.button1}
+            onClick={getCuisinePhotos}
+            disabled={!canLoadMore}
+          >
             load more
           </button>
           <Link to="/">
-            <button className={classes.button2}>
-              back
-            </button>
+            <button className={classes.button2}>back</button>
           </Link>
         </div>
       </div>

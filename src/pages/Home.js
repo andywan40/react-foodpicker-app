@@ -14,7 +14,7 @@ function Home(props) {
   const { classes } = props;
   const [cuisine, setCuisine] = useState("");
   const [dish, setDish] = useState("");
-  const [bgImg, setBgImg] = useState({ url: background, luminance: 1, desc: "" , user: ""});
+  const [bgImg, setBgImg] = useState({ url: background, luminance: 1, desc: "" , user: "", username: ""});
 
   const getFood = () => {
     //call api
@@ -38,7 +38,8 @@ function Home(props) {
         url: photo.urls.regular,
         luminance: getLuminance(photo.color),
         desc: photo["alt_description"],
-        user: photo.user.name
+        user: photo.user.name,
+        username: photo.user.username
       });
     } catch (e) {
       getCuisinePhoto(cuisine);
@@ -55,7 +56,8 @@ function Home(props) {
         url: photo.urls.regular,
         luminance: getLuminance(photo.color),
         desc: photo["alt_description"],
-        user: photo.user.name
+        user: photo.user.name,
+        username: photo.user.username
       });
     } catch (e) {
       setBgImg({ url: background, luminance: 1 , desc: "", user: ""});

@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/styles";
 import styles from "../styles/DishStyles";
 
 function Dish(props) {
+  console.log(props);
   const { classes } = props;
   const dish = props.match.params.dish;
   const dishInfo = props.location.dishProps.dishInfo;
@@ -12,6 +13,9 @@ function Dish(props) {
     window.open(`https://www.google.com/search?q=${dish}+near+me`);
   };
   const goBackLink = `/cuisine/${cuisine}`;
+  const usernameLink = `https://unsplash.com/@${dishInfo.username}?utm_source=myapp&utm_medium=referral`;
+  const unsplashLink =
+    "https://unsplash.com/?utm_source=myapp&utm_medium=referral";
   return (
     <div className={classes.root}>
       <div className={classes.contentContainer}>
@@ -19,18 +23,17 @@ function Dish(props) {
           {dish}
         </h2>
         <h4>{dishInfo.desc}</h4>
-        <img src={dishInfo.url} alt={dishInfo.alt} />
-        <h6>Credit to {dishInfo.user}</h6>
+        <img className={classes.img} src={dishInfo.url} alt={dishInfo.alt} />
+        <h6>
+          Photo by <a href={usernameLink}>{dishInfo.user}</a> on
+          <a href={unsplashLink}>Unsplash</a>
+        </h6>
         <div>
-        <Link to={goBackLink}>
-            <button className={classes.button1}>
-              {cuisine} food
-            </button>
+          <Link to={goBackLink}>
+            <button className={classes.button1}>{cuisine} food</button>
           </Link>
           <Link to="/">
-            <button className={classes.button2}>
-              back
-            </button>
+            <button className={classes.button2}>back</button>
           </Link>
         </div>
       </div>

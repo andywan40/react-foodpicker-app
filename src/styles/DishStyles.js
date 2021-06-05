@@ -22,10 +22,14 @@ const styles = {
   },
   title: {
     fontFamily: "cursive",
+    textTransform: "capitalize",
     "&:hover": {
         cursor: "pointer",
         textDecoration: "underline"
     }
+  },
+  img: {
+    borderRadius: "5px"
   },
   button1: {
     color: "white",
