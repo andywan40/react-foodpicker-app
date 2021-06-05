@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getCuisinePhotos = async (cuisine, currentPage) => {
-  const url = `http://localhost:4545/api/v1/unsplash/cuisine/${cuisine}/${currentPage}`;
+  const url = `https://react-foodpicker-app-backend.com/api/v1/unsplash/cuisine/${cuisine}/${currentPage}`;
   try {
     const data = await axios.get(url);
     return data.data;
