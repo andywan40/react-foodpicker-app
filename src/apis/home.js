@@ -1,5 +1,6 @@
 import axios from "axios";
-import { baseUrl, key } from "../helperFunctions/data";
+import { baseUrl} from "../helperFunctions/data";
+const key = process.env.REACT_APP_UNSPLASH_API_KEY;
 
 export const getDishPhoto = async (dish) => {
   const url = `${baseUrl}/search/photos?query=${dish}&client_id=${key}`;

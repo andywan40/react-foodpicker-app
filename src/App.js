@@ -4,6 +4,7 @@ import Cuisine from './pages/Cuisine';
 import Dish from './pages/Dish';
 import Page from './components/Page';
 
+console.log(process.env.REACT_APP_UNSPLASH_API_KEY)
 function App() {
   return (
     <div className="App">
