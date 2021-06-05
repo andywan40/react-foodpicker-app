@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { getCuisinePhotos } from "../apis/cuisine";
 import { withStyles } from "@material-ui/styles";
-//import foods from "../helperFunctions/foods";
-import { key, baseUrl } from "../helperFunctions/data";
 import styles from "../styles/CuisineStyles";
 
 function Cuisine(props) {
@@ -15,25 +13,22 @@ function Cuisine(props) {
   const [totalPages, setTotalPages] = useState(10000);
   const canLoadMore = currentPage < totalPages;
   useEffect(() => {
-    console.log("run");
-    //call api
-    getCuisinePhotos();
+    handleFetchCuisinePhotos();
   }, []);
 
-  const getCuisinePhotos = async () => {
-    const url = `${baseUrl}/search/photos?query=${cuisine}+food&page=${currentPage}&per_page=9&client_id=${key}`;
+  const handleFetchCuisinePhotos = async () => {
     try {
-      const data = await axios.get(url);
-      console.log(data);
-      const photos = data.data.results;
+      const data = await getCuisinePhotos(cuisine, currentPage);
+      const photos = data.results;
       let newDishes = [...dishes, ...photos];
       setDishes(newDishes);
       setCurrentPage(currentPage + 1);
-      if (data.data["total_pages"] !== totalPages)
-        setTotalPages(data.data["total_pages"]);
+      if (data["total_pages"] !== totalPages) {
+        setTotalPages(data["total_pages"]);
+      }
     } catch (e) {
-      console.log(e);
-      setDishes([]);
+        setDishes([]);
+        alert(`Something went wrong! Can't load ${cuisine} food pictures.`)
     }
   };
 
@@ -54,14 +49,14 @@ function Cuisine(props) {
                 className={classes.imageContainer}
                 key={dish["id"]}
                 to={{
-                  pathname: `/dish/${dish["alt_description"]}`,
+                  pathname: `/${cuisine}/${dish["alt_description"]}`,
                   dishProps: {
-                    dishInfo: { 
-                        url: dish.urls.regular,
-                        luminance: 1,
-                        desc: dish["alt_description"],
-                        user: dish.user.name,
-                        username: dish.user.username
+                    dishInfo: {
+                      url: dish.urls.regular,
+                      luminance: 1,
+                      desc: dish["alt_description"],
+                      user: dish.user.name,
+                      username: dish.user.username,
                     },
                     cuisine: cuisine,
                   },
@@ -82,7 +77,7 @@ function Cuisine(props) {
         <div>
           <button
             className={classes.button1}
-            onClick={getCuisinePhotos}
+            onClick={handleFetchCuisinePhotos}
             disabled={!canLoadMore}
           >
             load more

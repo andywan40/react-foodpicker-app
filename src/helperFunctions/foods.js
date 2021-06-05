@@ -167,7 +167,6 @@ const foods = [
       "Croissant",
       "Escargot",
       "Galette Complète",
-      "Madeleine",
       "Macaron",
       "Omelette",
       "Quiche",

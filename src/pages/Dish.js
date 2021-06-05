@@ -6,13 +6,13 @@ import styles from "../styles/DishStyles";
 function Dish(props) {
   console.log(props);
   const { classes } = props;
+  const cuisine = props.match.params.cuisine;
   const dish = props.match.params.dish;
   const dishInfo = props.location.dishProps.dishInfo;
-  const cuisine = props.location.dishProps.cuisine;
   const handleSearch = () => {
     window.open(`https://www.google.com/search?q=${dish}+near+me`);
   };
-  const goBackLink = `/cuisine/${cuisine}`;
+  const goBackLink = `/${cuisine}`;
   const usernameLink = `https://unsplash.com/@${dishInfo.username}?utm_source=myapp&utm_medium=referral`;
   const unsplashLink =
     "https://unsplash.com/?utm_source=myapp&utm_medium=referral";
@@ -26,9 +26,9 @@ function Dish(props) {
         <img className={classes.img} src={dishInfo.url} alt={dishInfo.alt} />
         <h6>
           Photo by <a href={usernameLink}>{dishInfo.user}</a> on
-          <a href={unsplashLink}>Unsplash</a>
+          <a href={unsplashLink}> Unsplash</a>
         </h6>
-        <div>
+        <div className={classes.buttonDiv}>
           <Link to={goBackLink}>
             <button className={classes.button1}>{cuisine} food</button>
           </Link>

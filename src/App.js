@@ -1,5 +1,4 @@
 import {Route, Switch} from 'react-router-dom';
-import './App.css';
 import Home from './pages/Home';
 import Cuisine from './pages/Cuisine';
 import Dish from './pages/Dish';
@@ -14,12 +13,12 @@ function App() {
             <Home {...routeProps}/> 
           </Page>
         }/>
-        <Route exact path="/cuisine/:cuisine" render={(routeProps) =>
+        <Route exact path="/:cuisine" render={(routeProps) =>
           <Page>
             <Cuisine {...routeProps}/> 
           </Page>
         }/>
-        <Route exact path="/dish/:dish" render={(routeProps) =>
+        <Route exact path="/:cuisine/:dish" render={(routeProps) =>
           <Page>
             <Dish {...routeProps}/> 
           </Page>

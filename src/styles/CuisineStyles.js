@@ -27,7 +27,6 @@ const styles = {
       cursor: "pointer",
       textDecoration: "underline",
     },
-    
   },
   button1: {
     color: "white",
@@ -38,6 +37,9 @@ const styles = {
     borderRadius: "5px",
     fontWeight: 800,
     marginRight: "1rem",
+    [sizes.down("sm")]: {
+      padding: "10px 25px",
+    },
   },
   button2: {
     color: "white",
@@ -47,6 +49,9 @@ const styles = {
     cursor: "pointer",
     borderRadius: "5px",
     fontWeight: 800,
+    [sizes.down("sm")]: {
+      padding: "10px 25px",
+    },
   },
   gridContainer: {
     boxSizing: "border-box",
@@ -57,13 +62,12 @@ const styles = {
     [sizes.down("md")]: {
       gridTemplateColumns: "repeat(2, 50%)",
     },
-    [sizes.down("xs")]: {
+    [sizes.down("sm")]: {
       gridTemplateColumns: "repeat(1, 100%)",
       gridGap: "1.4rem",
     },
   },
   imageContainer: {
-    //TODO
     position: "relative",
     "&:hover": {
       cursor: "pointer",
@@ -72,7 +76,7 @@ const styles = {
       },
       "& div": {
         opacity: 1,
-        fontWeight: 600
+        fontWeight: 600,
       },
     },
   },

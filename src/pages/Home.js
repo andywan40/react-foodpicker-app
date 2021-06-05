@@ -1,71 +1,58 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { withStyles } from "@material-ui/styles";
 import RestaurantIcon from "@material-ui/icons/Restaurant";
-import styles from "../styles/HomeStyles";
 import foods from "../helperFunctions/foods";
 import { getRandomItem } from "../helperFunctions/random";
 import { getLuminance } from "../helperFunctions/colorHelpers";
+import { getDishPhoto, getCuisinePhoto } from "../apis/home";
+import styles from "../styles/HomeStyles";
 import background from "../images/homebg.jpg";
-import {key,baseUrl} from "../helperFunctions/data";
 
 function Home(props) {
   const { classes } = props;
   const [cuisine, setCuisine] = useState("");
   const [dish, setDish] = useState("");
-  const [bgImg, setBgImg] = useState({ url: background, luminance: 1, desc: "" , user: "", username: ""});
+  const [bgImg, setBgImg] = useState({
+    url: background,
+    luminance: 1,
+    desc: "",
+    user: "",
+    username: "",
+  });
 
-  const getFood = () => {
-    //call api
+  const getFood = async () => {
     const item = getRandomItem(foods);
     const cuisine = item.cuisine;
-    const dishes = item.dishes;
-    const dish = getRandomItem(dishes);
-    getDishPhoto(dish, cuisine);
+    const dish = getRandomItem(item.dishes);
+    try{
+        const data = await getDishPhoto(dish);
+        dealWithPhotoData(data);
+    }catch(e){
+        try{
+            const data = await getCuisinePhoto(cuisine);
+            dealWithPhotoData(data);
+        } catch(e){
+            setBgImg({ url: background, luminance: 1, desc: "", user: "" });
+        }  
+    }
     setCuisine(cuisine);
     setDish(dish);
   };
 
-  const getDishPhoto = async (dish, cuisine) => {
-    const url = `${baseUrl}/search/photos?query=${dish}&client_id=${key}`;
-    try {
-      const data = await axios.get(url);
-      const photos = data.data.results;
-      const photo = getRandomItem(photos);
-      console.log(photo);
-      setBgImg({
-        url: photo.urls.regular,
-        luminance: getLuminance(photo.color),
-        desc: photo["alt_description"],
-        user: photo.user.name,
-        username: photo.user.username
-      });
-    } catch (e) {
-      getCuisinePhoto(cuisine);
-    }
-  };
-
-  const getCuisinePhoto = async (cuisine) => {
-    const url = `${baseUrl}/search/photos?query=${cuisine}food&client_id=${key}`;
-    try {
-      const data = await axios.get(url);
-      const photos = data.data.results;
-      const photo = getRandomItem(photos);
-      setBgImg({
-        url: photo.urls.regular,
-        luminance: getLuminance(photo.color),
-        desc: photo["alt_description"],
-        user: photo.user.name,
-        username: photo.user.username
-      });
-    } catch (e) {
-      setBgImg({ url: background, luminance: 1 , desc: "", user: ""});
-    }
-  };
+  const dealWithPhotoData = res => {
+    const photos = res.results;
+    const photo = getRandomItem(photos);
+    setBgImg({
+      url: photo.urls.regular,
+      luminance: getLuminance(photo.color),
+      desc: photo["alt_description"],
+      user: photo.user.name,
+      username: photo.user.username,
+    });
+  }
 
   const textColor = bgImg.luminance < 0.725 ? "white" : "black"; //luminacne is 1 => bg is white, text should be dark
-
   const styles = {
     backgroundImage: `url(${bgImg.url})`,
     color: textColor,
@@ -73,17 +60,17 @@ function Home(props) {
   };
 
   const cuisineObj = {
-    pathname: `/cuisine/${cuisine}`,
+    pathname: `/${cuisine}`,
     cuisineProps: {
       photo: bgImg,
     },
   };
 
   const dishObj = {
-    pathname: `/dish/${dish}`,
+    pathname: `/${cuisine}/${dish}`,
     dishProps: {
       dishInfo: bgImg,
-      cuisine: cuisine
+      cuisine: cuisine,
     },
   };
 

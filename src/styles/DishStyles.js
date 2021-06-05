@@ -8,28 +8,33 @@ const styles = {
     overflow: "scroll",
   },
   contentContainer: {
-    marginTop: "2rem",
-    marginBottom: "2rem",
-    width: "80%",
+    boxSizing: "border-box",
+    position: "relative",
+    marginTop: "2.5rem",
+    marginBottom: "2.5rem",
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     flexDirection: "column",
-    flexWrap: "wrap",
-    [sizes.down("xs")]: {
-      width: "90%"
-    }
+    alignItems:"center",
+    width: "70vw",
+    [sizes.down("md")]: {
+      width: "80vw",
+    },
+    [sizes.down("sm")]: {
+      width: "90vw",
+    },
   },
   title: {
     fontFamily: "cursive",
     textTransform: "capitalize",
     "&:hover": {
-        cursor: "pointer",
-        textDecoration: "underline"
-    }
+      cursor: "pointer",
+      textDecoration: "underline",
+    },
   },
   img: {
-    borderRadius: "5px"
+    borderRadius: "5px",
+    height: "80%",
+    width: "80%",
   },
   button1: {
     color: "white",
@@ -39,7 +44,7 @@ const styles = {
     cursor: "pointer",
     borderRadius: "5px",
     fontWeight: 800,
-    marginRight: "1rem"
+    marginRight: "1rem",
   },
   button2: {
     color: "white",
@@ -48,7 +53,7 @@ const styles = {
     textTransform: "uppercase",
     cursor: "pointer",
     borderRadius: "5px",
-    fontWeight: 800
+    fontWeight: 800,
   },
 };
 export default styles;
