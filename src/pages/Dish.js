@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/styles";
 import styles from "../styles/DishStyles";
 
 function Dish(props) {
-  console.log(props);
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const dish = props.match.params.dish;

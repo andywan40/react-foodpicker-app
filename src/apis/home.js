@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const getDishPhoto = async (dish) => {
-  //const url = `${baseUrl}/search/photos?query=${dish}&client_id=${key}`;
   const url = `http://localhost:4545/api/v1/unsplash/dish/${dish}`
   try{
     const data = await axios.get(url);
@@ -13,7 +12,6 @@ export const getDishPhoto = async (dish) => {
 };
 
 export const getCuisinePhoto = async (cuisine) => {
-  //const url = `${baseUrl}/search/photos?query=${cuisine}food&client_id=${key}`;
   const url = `http://localhost:4545/api/v1/unsplash/cuisine/${cuisine}/1`
   try{
     const data = await axios.get(url);
