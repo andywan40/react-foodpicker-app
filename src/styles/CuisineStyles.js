@@ -10,14 +10,14 @@ const styles = {
   contentContainer: {
     marginTop: "2rem",
     marginBottom: "2rem",
-    width: "80%",
+    width: "75%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
     flexWrap: "wrap",
     [sizes.down("xs")]: {
-      width: "90%",
+      width: "85%",
     },
   },
   title: {
@@ -29,6 +29,14 @@ const styles = {
       textDecoration: "underline",
     },
   },
+  buttonDiv: {
+    marginTop: "1rem",
+    marginBottom: "2rem",
+    [sizes.down("sm")]: {
+      marginTop: "2rem",
+      marginBottom: "4rem",
+    },
+  },
   button1: {
     color: "white",
     backgroundColor: "black",
@@ -37,7 +45,6 @@ const styles = {
     cursor: "pointer",
     borderRadius: "5px",
     fontWeight: 800,
-    marginBottom: "2rem",
     marginRight: "1rem",
     [sizes.down("sm")]: {
       padding: "10px 25px",
@@ -51,7 +58,6 @@ const styles = {
     cursor: "pointer",
     borderRadius: "5px",
     fontWeight: 800,
-    marginBottom: "2rem",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },

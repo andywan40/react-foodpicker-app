@@ -73,7 +73,7 @@ function Cuisine(props) {
             );
           })}
         </div>
-        <div>
+        <div className={classes.buttonDiv}>
           <button
             className={classes.button1}
             onClick={handleFetchCuisinePhotos}
