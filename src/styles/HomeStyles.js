@@ -20,11 +20,9 @@ const styles = {
     fontSize: "4rem",
     marginBottom: "1rem",
     [sizes.down("phone")]: {
-      fontSize: "3rem",
+      fontSize: "2.5rem",
     },
-    [sizes.down("xxs")]: {
-      fontSize: "2rem",
-    },
+    
   },
   restaurantIcon: {
     cursor: "pointer",

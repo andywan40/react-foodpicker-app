@@ -36,6 +36,16 @@ const styles = {
     height: "80%",
     width: "80%",
   },
+  buttonDiv: {
+    marginTop: "1rem",
+    marginBottom: "2rem",
+    [sizes.down("sm")]: {
+      marginBottom: "4rem",
+    },
+    [sizes.down("phone")]: {
+      marginBottom: "6rem",
+    },
+  },
   button1: {
     color: "white",
     backgroundColor: "black",
