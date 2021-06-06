@@ -42,6 +42,7 @@ function Home(props) {
 
   const dealWithPhotoData = res => {
     const photos = res.results;
+    //const photo = photos[0];
     const photo = getRandomItem(photos);
     setBgImg({
       url: photo.urls.regular,

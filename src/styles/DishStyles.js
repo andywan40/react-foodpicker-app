@@ -45,6 +45,12 @@ const styles = {
     borderRadius: "5px",
     fontWeight: 800,
     marginRight: "1rem",
+    [sizes.down("sm")]: {
+      padding: "10px 25px",
+    },
+    [sizes.down("phone")]: {
+      padding: "6px 15px",
+    },
   },
   button2: {
     color: "white",
@@ -54,6 +60,12 @@ const styles = {
     cursor: "pointer",
     borderRadius: "5px",
     fontWeight: 800,
+    [sizes.down("sm")]: {
+      padding: "10px 25px",
+    },
+    [sizes.down("phone")]: {
+      padding: "6px 15px",
+    },
   },
 };
 export default styles;

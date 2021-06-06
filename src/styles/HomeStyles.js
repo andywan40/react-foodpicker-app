@@ -1,4 +1,5 @@
 import background from "../images/homebg.jpg";
+import sizes from "./sizes";
 const styles = {
   Home: {
     height: "100vh",
@@ -9,12 +10,21 @@ const styles = {
     backgroundImage: `url(${background})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "100vw 120vh",
+    [sizes.down("phone")]: {
+      backgroundSize: "100vw 100vh",
+    },
   },
   button: {},
   title: {
     fontFamily: "'Bebas Neue', cursive",
     fontSize: "4rem",
     marginBottom: "1rem",
+    [sizes.down("phone")]: {
+      fontSize: "3rem",
+    },
+    [sizes.down("xxs")]: {
+      fontSize: "2rem",
+    },
   },
   restaurantIcon: {
     cursor: "pointer",
@@ -25,26 +35,30 @@ const styles = {
     "&:active": {
       transform: "translateY(4px)",
     },
+    [sizes.down("phone")]: {
+      fontSize: "2rem",
+    },
+    
   },
   result: {
-    marginTop: "2rem"
+    marginTop: "2rem",
+    
   },
   link: {
     textDecoration: "none",
-    color: "inherit"
+    color: "inherit",
   },
   cuisine: {
     "&:hover": {
-        cursor: "pointer",
-        textDecoration: "underline",
+      cursor: "pointer",
+      textDecoration: "underline",
     },
   },
   dish: {
     "&:hover": {
-        cursor: "pointer",
-        textDecoration: "underline",
+      cursor: "pointer",
+      textDecoration: "underline",
     },
-  }
-  
+  },
 };
 export default styles;

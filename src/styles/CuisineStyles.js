@@ -21,6 +21,7 @@ const styles = {
     },
   },
   title: {
+    marginBottom: "3rem",
     fontFamily: "cursive",
     textTransform: "capitalize",
     "&:hover": {
@@ -36,6 +37,7 @@ const styles = {
     cursor: "pointer",
     borderRadius: "5px",
     fontWeight: 800,
+    marginBottom: "2rem",
     marginRight: "1rem",
     [sizes.down("sm")]: {
       padding: "10px 25px",
@@ -49,6 +51,7 @@ const styles = {
     cursor: "pointer",
     borderRadius: "5px",
     fontWeight: 800,
+    marginBottom: "2rem",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
@@ -58,7 +61,8 @@ const styles = {
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",
-    gridGap: "2.5rem",
+    gridGap: "2rem",
+    justifyContent: "center",
     [sizes.down("md")]: {
       gridTemplateColumns: "repeat(2, 50%)",
     },
@@ -79,6 +83,8 @@ const styles = {
         fontWeight: 600,
       },
     },
+    display: "flex",
+    justifyContent: "center"
   },
   dishImg: {
     width: "90%",
