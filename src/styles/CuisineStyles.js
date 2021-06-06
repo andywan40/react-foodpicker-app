@@ -36,6 +36,10 @@ const styles = {
       marginTop: "2rem",
       marginBottom: "4rem",
     },
+    [sizes.down("phone")]: {
+      marginTop: "2rem",
+      marginBottom: "6rem",
+    },
   },
   button1: {
     color: "white",
