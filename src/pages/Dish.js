@@ -4,10 +4,13 @@ import { withStyles } from "@material-ui/styles";
 import styles from "../styles/DishStyles";
 
 function Dish(props) {
+  console.log(props);
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const dish = props.match.params.dish;
-  const dishInfo = props.location.dishProps.dishInfo;
+  const dishInfo = props.location?.dishProps?.dishInfo || JSON.parse(sessionStorage.getItem("dishInfo"));
+  sessionStorage.setItem("dishInfo", JSON.stringify(dishInfo));
+  
   const handleSearch = () => {
     window.open(`https://www.google.com/search?q=${dish}+near+me`);
   };

@@ -69,7 +69,7 @@ const foods = [
       "Braised pork",
       "Braised pork belly",
       "Dumplings",
-      "Chow Mein",
+      "Stir-fried Noodles",
       "Peking Roasted Duck",
       "Fried Rice",
       "Sweet and sour pork",
