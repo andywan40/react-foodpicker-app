@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Cuisine from "./pages/Cuisine";
 import Dish from "./pages/Dish";
@@ -6,6 +6,7 @@ import Page from "./components/Page";
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
       <Switch>
         <Route
@@ -37,6 +38,7 @@ function App() {
         />
       </Switch>
     </div>
+    </BrowserRouter>
   );
 }
 
