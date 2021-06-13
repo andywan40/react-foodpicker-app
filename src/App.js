@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Cuisine from "./pages/Cuisine";
 import Dish from "./pages/Dish";
@@ -34,6 +34,12 @@ function App() {
             <Page>
               <Dish {...routeProps} />
             </Page>
+          )}
+        />
+        <Route
+          path="*"
+          render={(routeProps) => (
+            <Redirect to="/"></Redirect>
           )}
         />
       </Switch>

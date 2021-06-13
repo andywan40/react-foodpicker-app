@@ -1,4 +1,3 @@
-//TODO move this to backend
 const foods = [
   {
     cuisine: "Japanese",
@@ -183,4 +182,7 @@ const foods = [
   },
 ];
 
+export const cuisines = [
+  "Japanese", "American", "Chinese", "Indian", "Italian", "Mexican", "Thai", "French", "Vietnamese"
+];
 export default foods;
