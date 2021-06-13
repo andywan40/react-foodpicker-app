@@ -53,6 +53,10 @@ const styles = {
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
+    "&:disabled": {
+      cursor: "not-allowed",
+      opacity: "0.7"
+    }
   },
   button2: {
     color: "white",

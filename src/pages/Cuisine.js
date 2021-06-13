@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCuisinePhotos } from "../apis/cuisine";
 import { withStyles } from "@material-ui/styles";
@@ -11,6 +11,7 @@ function Cuisine(props) {
   const [dishes, setDishes] = usePersistedState(cuisine, []);
   const [currentPage, setCurrentPage] = usePersistedState("currentPage", 1);
   const [totalPages, setTotalPages] = usePersistedState("totalPages", 1000000);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(()=> {
     if(dishes.length === 0) handleFetchCuisinePhotos();
@@ -19,6 +20,7 @@ function Cuisine(props) {
   const canLoadMore = currentPage < totalPages;
   const handleFetchCuisinePhotos = async ()=> {
     try {
+      setIsLoading(true);
       const data = await getCuisinePhotos(cuisine, currentPage);
       const photos = data.results;
       let newDishes = [...dishes, ...photos];
@@ -29,9 +31,11 @@ function Cuisine(props) {
         let newTotalPages = data["total_pages"];
         setTotalPages(newTotalPages);
       }
+      setTimeout(()=> setIsLoading(false), 500);
     } catch (e) {
         setDishes([]);
         alert(`Something went wrong! Can't load ${cuisine} food pictures.`)
+        setIsLoading(false);
     }
     
   };
@@ -79,7 +83,7 @@ function Cuisine(props) {
             );
           })}
         </div>
-        <div className={classes.buttonDiv }>
+        {!isLoading &&  <div className={classes.buttonDiv }>
           <button
             className={classes.button1}
             onClick={handleFetchCuisinePhotos}
@@ -90,7 +94,7 @@ function Cuisine(props) {
           <Link to="/">
             <button className={classes.button2}>back</button>
           </Link>
-        </div>
+        </div>}
       </div>
     </div>
   );
