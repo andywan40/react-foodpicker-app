@@ -59,5 +59,13 @@ const styles = {
       textDecoration: "underline",
     },
   },
+  hrefLink: {
+    color: "inherit",
+    textShadow: "none",
+    "& a": {
+      color: "inherit",
+      textDecoration: "underline",
+    },
+  }
 };
 export default styles;

@@ -19,9 +19,12 @@ function Home(props) {
     url: background,
     luminance: 1,
     desc: "",
-    user: "",
-    username: "",
+    user: "Brooke Lark",
+    username: "brookelark",
   });
+
+  const usernameLink = `https://unsplash.com/@${bgImg.username}?utm_source=foodpickerapp&utm_medium=referral`;
+  const unsplashLink = "https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral";
 
   const getFood = async () => {
     setIsLoading(true);
@@ -99,6 +102,10 @@ function Home(props) {
           <h3 className={classes.dish}>{dish}</h3>
         </Link>
       </div>
+      <h6 className={classes.hrefLink}>
+        Photo by <a href={usernameLink}>{bgImg.user}</a> on
+        <a href={unsplashLink}> Unsplash</a>
+      </h6>
     </div>
   );
 }
