@@ -9,8 +9,8 @@ function Cuisine(props) {
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const [dishes, setDishes] = usePersistedState(cuisine, []);
-  const [currentPage, setCurrentPage] = usePersistedState("currentPage", 1);
-  const [totalPages, setTotalPages] = usePersistedState("totalPages", 1000000);
+  const [currentPage, setCurrentPage] = usePersistedState(`currentPage-${cuisine}`, 1);
+  const [totalPages, setTotalPages] = usePersistedState(`totalPages-${cuisine}`, 1000000);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(()=> {
