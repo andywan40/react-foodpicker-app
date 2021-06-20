@@ -6,19 +6,21 @@ import styles from "../styles/CuisineStyles";
 import usePersistedState from "../hooks/usePersistedState";
 
 function Cuisine(props) {
+  console.log("render");
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const [dishes, setDishes] = usePersistedState(cuisine, []);
   const [currentPage, setCurrentPage] = usePersistedState(`currentPage-${cuisine}`, 1);
   const [totalPages, setTotalPages] = usePersistedState(`totalPages-${cuisine}`, 1000000);
   const [isLoading, setIsLoading] = useState(false);
+  const canLoadMore = currentPage < totalPages;
+  
 
   useEffect(()=> {
     if(dishes.length === 0) handleFetchCuisinePhotos();
   }, []);
-  
-  const canLoadMore = currentPage < totalPages;
-  const handleFetchCuisinePhotos = async ()=> {
+
+   const handleFetchCuisinePhotos = async ()=> {
     try {
       setIsLoading(true);
       const data = await getCuisinePhotos(cuisine, currentPage);

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import Home from "./pages/Home";
-import Cuisine from "./pages/Cuisine";
-import Dish from "./pages/Dish";
+import Home from "./components/Home";
+import Cuisine from "./components/Cuisine";
+import Dish from "./components/Dish";
 import Page from "./components/Page";
 
 function App() {
