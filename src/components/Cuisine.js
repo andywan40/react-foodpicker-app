@@ -6,7 +6,6 @@ import styles from "../styles/CuisineStyles";
 import usePersistedState from "../hooks/usePersistedState";
 
 function Cuisine(props) {
-  console.log("render");
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const [dishes, setDishes] = usePersistedState(cuisine, []);
