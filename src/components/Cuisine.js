@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCuisinePhotos } from "../apis/cuisine";
 import { withStyles } from "@material-ui/styles";
@@ -6,39 +6,29 @@ import styles from "../styles/CuisineStyles";
 import usePersistedState from "../hooks/usePersistedState";
 
 function Cuisine(props) {
+  console.log('render')
   const { classes } = props;
   const cuisine = props.match.params.cuisine;
   const [dishes, setDishes] = usePersistedState(cuisine, []);
   const [currentPage, setCurrentPage] = usePersistedState(`currentPage-${cuisine}`, 1);
   const [totalPages, setTotalPages] = usePersistedState(`totalPages-${cuisine}`, 1000000);
-  const [isLoading, setIsLoading] = useState(false);
   const canLoadMore = currentPage < totalPages;
-  
 
   useEffect(()=> {
-    if(dishes.length === 0) handleFetchCuisinePhotos();
+    if(dishes.length === 0) handleFetchCuisinePhotos(cuisine, currentPage);
   }, []);
 
-   const handleFetchCuisinePhotos = async ()=> {
+  const handleFetchCuisinePhotos = async ( food, page)=> {
     try {
-      setIsLoading(true);
-      const data = await getCuisinePhotos(cuisine, currentPage);
-      const photos = data.results;
-      let newDishes = [...dishes, ...photos];
-      let newCurrentPage = currentPage + 1;
-      setDishes(newDishes);
-      setCurrentPage(newCurrentPage);
-      if (data["total_pages"] !== totalPages) {
-        let newTotalPages = data["total_pages"];
-        setTotalPages(newTotalPages);
-      }
-      setTimeout(()=> setIsLoading(false), 500);
+      const data = await getCuisinePhotos(food, page);
+      const newDishes = data.results;
+      setDishes([...dishes, ...newDishes]);
+      setCurrentPage( pg => pg + 1);
+      if (data.total_pages !== totalPages) setTotalPages(data.total_pages);
     } catch (e) {
         setDishes([]);
         alert(`Something went wrong! Can't load ${cuisine} food pictures.`)
-        setIsLoading(false);
     }
-    
   };
 
   const handleSearch = () => {
@@ -84,10 +74,10 @@ function Cuisine(props) {
             );
           })}
         </div>
-        {!isLoading &&  <div className={classes.buttonDiv }>
+        <div className={classes.buttonDiv }>
           <button
             className={classes.button1}
-            onClick={handleFetchCuisinePhotos}
+            onClick={()=> handleFetchCuisinePhotos(cuisine, currentPage)}
             disabled={!canLoadMore}
           >
             load more
@@ -95,7 +85,7 @@ function Cuisine(props) {
           <Link to="/">
             <button className={classes.button2}>back</button>
           </Link>
-        </div>}
+        </div>
       </div>
     </div>
   );
