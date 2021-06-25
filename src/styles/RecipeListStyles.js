@@ -8,29 +8,35 @@ const styles = {
     overflow: "scroll",
   },
   contentContainer: {
-    boxSizing: "border-box",
-    position: "relative",
-    marginTop: "2.5rem",
-    marginBottom: "2.5rem",
+    marginTop: "2rem",
+    marginBottom: "2rem",
+    width: "75%",
     display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     flexDirection: "column",
-    alignItems:"center",
-    width: "70vw",
-    [sizes.down("md")]: {
-      width: "80vw",
-    },
-    [sizes.down("sm")]: {
-      width: "90vw",
+    flexWrap: "wrap",
+    [sizes.down("xs")]: {
+      width: "85%",
     },
   },
   title: {
+    marginBottom: "1rem",
     fontFamily: "cursive",
     textTransform: "capitalize",
-    marginBottom: 0,
     "&:hover": {
       cursor: "pointer",
       textDecoration: "underline",
     },
+  },
+  icon: {
+    color: "inherit",
+    marginTop: "4rem",
+    fontSize: "2.5rem",
+    [sizes.down("phone")]: {
+      fontSize: "2rem",
+    },
+    
   },
   recipeButton: {
     marginBottom: "2rem",
@@ -41,18 +47,15 @@ const styles = {
     borderRadius: "5px",
     textTransform: "uppercase",
   },
-  img: {
-    borderRadius: "5px",
-    height: "80%",
-    width: "80%",
-  },
   buttonDiv: {
     marginTop: "1rem",
     marginBottom: "2rem",
     [sizes.down("sm")]: {
+      marginTop: "2rem",
       marginBottom: "4rem",
     },
     [sizes.down("phone")]: {
+      marginTop: "2rem",
       marginBottom: "6rem",
     },
   },
@@ -68,9 +71,10 @@ const styles = {
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
-    [sizes.down("phone")]: {
-      padding: "6px 15px",
-    },
+    "&:disabled": {
+      cursor: "not-allowed",
+      opacity: "0.7"
+    }
   },
   button2: {
     color: "white",
@@ -83,9 +87,22 @@ const styles = {
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
-    [sizes.down("phone")]: {
-      padding: "6px 15px",
-    },
   },
+  gridContainer: {
+    boxSizing: "border-box",
+    width: "100%",
+    marginTop: "1rem",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 30%)",
+    gridGap: "2rem",
+    justifyContent: "center",
+    [sizes.down("md")]: {
+      gridTemplateColumns: "repeat(2, 50%)",
+    },
+    [sizes.down("sm")]: {
+      gridTemplateColumns: "repeat(1, 100%)",
+      gridGap: "1.4rem",
+    },
+  }
 };
 export default styles;

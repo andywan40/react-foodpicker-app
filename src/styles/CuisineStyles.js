@@ -21,13 +21,22 @@ const styles = {
     },
   },
   title: {
-    marginBottom: "3rem",
+    marginBottom: "1rem",
     fontFamily: "cursive",
     textTransform: "capitalize",
     "&:hover": {
       cursor: "pointer",
       textDecoration: "underline",
     },
+  },
+  recipeButton: {
+    marginBottom: "2rem",
+    color: "white",
+    backgroundColor: "black",
+    padding: "10px 25px",
+    cursor: "pointer",
+    borderRadius: "5px",
+    textTransform: "uppercase",
   },
   buttonDiv: {
     marginTop: "1rem",

@@ -24,27 +24,39 @@ const styles = {
     },
   },
   title: {
-    fontFamily: "cursive",
+    fontFamily: "'Mate SC', serif",
     textTransform: "capitalize",
-    marginBottom: 0,
+    fontSize: "2rem",
+    "& a": {
+      textDecoration: "none",
+      color: "black"
+    },
     "&:hover": {
       cursor: "pointer",
       textDecoration: "underline",
     },
   },
-  recipeButton: {
-    marginBottom: "2rem",
-    color: "white",
-    backgroundColor: "black",
-    padding: "10px 25px",
-    cursor: "pointer",
-    borderRadius: "5px",
-    textTransform: "uppercase",
+  section: {
+    textAlign: "center",
+    "& h4": {
+      fontSize: "1.5rem",
+      fontFamily: "'Patrick Hand', cursive",
+      textTransform: "uppercase",
+      marginTop: "0.5rem",
+      marginBottom: "0.5rem",
+      color:"#3f506e"
+    },
+    "& li": {
+      textAlign: "start",
+      listStyle: "square",
+    },
+    borderTop: "1px solid black",
+    width: "60%",
   },
   img: {
     borderRadius: "5px",
-    height: "80%",
-    width: "80%",
+    height: "50%",
+    width: "50%",
   },
   buttonDiv: {
     marginTop: "1rem",

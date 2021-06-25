@@ -18,9 +18,11 @@ function Home(props) {
   const [bgImg, setBgImg] = useState({
     url: background,
     luminance: 1,
+    title: "",
     desc: "",
     user: "Brooke Lark",
     username: "brookelark",
+    canGetRecipe: false
   });
 
   const usernameLink = `https://unsplash.com/@${bgImg.username}?utm_source=foodpickerapp&utm_medium=referral`;
@@ -33,13 +35,13 @@ function Home(props) {
     const dish = getRandomItem(item.dishes);
     try {
       const data = await getDishPhoto(dish);
-      dealWithPhotoData(data);
+      dealWithPhotoData(data, dish);
     } catch (e) {
       try {
         const data = await getCuisinePhoto(cuisine);
-        dealWithPhotoData(data);
+        dealWithPhotoData(data, dish);
       } catch (e) {
-        setBgImg({ url: background, luminance: 1, desc: "", user: "" });
+        setBgImg({ url: background, luminance: 1, desc: "", user: "Brooke Lark", username: "brookelark", title: "", canGetRecipe: false});
       }
     }
     setCuisine(cuisine);
@@ -47,16 +49,17 @@ function Home(props) {
     setIsLoading(false);
   };
 
-  const dealWithPhotoData = (res) => {
+  const dealWithPhotoData = (res, chosenDish) => {
     const photos = res.results;
-    //const photo = photos[0];
-    const photo = getRandomItem(photos);
+    const photo = photos[0];
     setBgImg({
       url: photo.urls.regular,
       luminance: getLuminance(photo.color),
-      desc: photo["alt_description"],
+      title: chosenDish || photo.description,
+      desc: photo.alt_description,
       user: photo.user.name,
       username: photo.user.username,
+      canGetRecipe: true
     });
   };
 

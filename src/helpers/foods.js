@@ -144,15 +144,18 @@ const foods = [
     ],
   },
   {
-    cuisine: "Thai",
+    cuisine: "British",
     dishes: [
-      "Chicken Satay",
-      "Tom Yam Soup",
-      "Pad Thai",
-      "Chicken Curry",
-      "Som Tam (Papaya Salad)",
-      "Fish Curry",
-      "Massaman Curry",
+      "The Full English",
+      "Black Pudding",
+      "Fish and Chips",
+      "Sausage Roll",
+      "Eton Mess",
+      "Scones",
+      "Shepherd's Pie",
+      "Beef Wellington",
+      "Afternoon Tea",
+      "Cornish Pasty"
     ],
   },
   {
@@ -177,12 +180,29 @@ const foods = [
     ],
   },
   {
-    cuisine: "Vietnamese",
-    dishes: ["Pho", "Banh Mi", "Bun Cha"],
+    cuisine: "Mediterranean",
+    dishes: [
+      "Pita",
+      "Greek Salad",
+      "Baklava",
+      "Borek",
+      "Mezze",
+      "Fattoush Salad",
+      "Falafel",
+      "Shakshuka",
+      "Couscous",
+      "Ratatouille",
+      "Paella",
+      "Tapas",
+      "Soufflé",
+      "Pizza Margherita",
+      "Wine",
+    ],
   },
+  
 ];
 
 export const cuisines = [
-  "Japanese", "American", "Chinese", "Indian", "Italian", "Mexican", "Thai", "French", "Vietnamese"
+  "Japanese", "American", "Chinese", "Indian", "Italian", "Mexican", "British", "French", "Mediterranean"
 ];
 export default foods;
