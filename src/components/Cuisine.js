@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback} from "react";
 import { Link } from "react-router-dom";
 import { nanoid } from 'nanoid';
+import { ToastContainer, toast } from 'react-toastify';
 import { withStyles } from "@material-ui/styles";
 import styles from "../styles/CuisineStyles";
 import { getCuisinePhotos } from "../apis/cuisine";
@@ -8,7 +9,7 @@ import usePersistedState from "../hooks/usePersistedState";
 
 function Cuisine(props) {
   const { classes } = props;
-  const cuisine = props.match.params.cuisine;
+  const {cuisine} = props.match.params;
   const [dishes, setDishes] = usePersistedState(cuisine, []);
   const [currentPage, setCurrentPage] = usePersistedState(`currentPage-${cuisine}`, 1);
   const [totalPages, setTotalPages] = usePersistedState(`totalPages-${cuisine}`, 1000000);
@@ -25,7 +26,16 @@ function Cuisine(props) {
       setIsLoading(false);
     } catch (e) {
       setDishes([]);
-      alert(`Something went wrong! Can't load ${cuisine} food pictures.`);
+      toast.error(`Can't Load ${cuisine} Food Pictures!`, {
+          position: "top-right",
+          autoclose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          toastId: "custom"
+      });
       setIsLoading(false);
     }
   }, [cuisine, dishes, setCurrentPage, setDishes, setTotalPages, totalPages]);
@@ -41,6 +51,7 @@ function Cuisine(props) {
   return (
     <div className={classes.root}>
       <div className={classes.contentContainer}>
+        <ToastContainer />
         <h2 className={classes.title} onClick={handleSearch}>
           {cuisine} Food
         </h2>

@@ -1,12 +1,10 @@
 import axios from "axios";
-
 export const getCuisineRecipes = async (cuisine, nextLink) => {
   const url = nextLink === "" ? `https://react-foodpicker-app-backend.herokuapp.com/api/v1/edamam/cuisine/${cuisine}/null` :  `https://react-foodpicker-app-backend.herokuapp.com/api/v1/edamam/cuisine/${cuisine}/${nextLink}`;   
   try {
     const data = await axios.get(url);
     return data.data;
   } catch (e) {
-    console.log(e)
     throw new Error(e);
   }
 };

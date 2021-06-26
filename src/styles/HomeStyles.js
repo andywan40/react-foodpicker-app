@@ -41,6 +41,7 @@ const styles = {
   },
   result: {
     marginTop: "2rem",
+    textTransform: "capitalize"
     
   },
   link: {
@@ -58,6 +59,10 @@ const styles = {
       cursor: "pointer",
       textDecoration: "underline",
     },
+  },
+  disabledDish: {
+    textDecoration: "none",
+    cursor: "not-allowed"
   },
   hrefLink: {
     color: "inherit",

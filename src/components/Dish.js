@@ -1,21 +1,38 @@
 import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import { withStyles } from "@material-ui/styles";
 import styles from "../styles/DishStyles";
 
 function Dish(props) {
-  const { classes } = props;
-  const cuisine = props.match.params.cuisine;
-  const dishInfo = props.location?.dishProps?.dishInfo || JSON.parse(sessionStorage.getItem("dishInfo"));
+  const { classes, history } = props;
+  const { cuisine, dish} = props.match.params;
+  const dishInfo = props.location?.dishProps?.dishInfo || JSON.parse(sessionStorage.getItem(`${dish.toLowerCase()}-dishInfo`));
+  if(!dishInfo){
+    toast.error(`Can't Fetch ${dish} Data`, {
+          position: "top-right",
+          autoclose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          toastId: "custom",
+          onClose: () => history.push("/")
+    });
+  }
   useEffect(()=> {
-    sessionStorage.setItem("dishInfo", JSON.stringify(dishInfo));
-  }, [dishInfo])
+    sessionStorage.setItem(`${dish.toLowerCase()}-dishInfo`, JSON.stringify(dishInfo));
+  }, [dishInfo, dish])
   const handleSearch = () => {
     window.open(`https://www.google.com/search?q=${dishInfo.title}+near+me`);
   };
   
   return (
     <div className={classes.root}>
+      <ToastContainer/>
+      {
+        dishInfo && 
       <div className={classes.contentContainer}>
         <h2 className={classes.title} onClick={handleSearch}>
           {dishInfo.title}
@@ -38,6 +55,7 @@ function Dish(props) {
           </Link>
         </div>
       </div>
+      }
     </div>
   );
 }

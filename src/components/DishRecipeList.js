@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import { withStyles } from "@material-ui/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import styles from "../styles/RecipeListStyles";
@@ -7,8 +8,9 @@ import {getDishRecipes } from "../apis/recipes";
 import usePersistedState from "../hooks/usePersistedState";
 import RecipeItem from './RecipeItem';
 
+
 function DishRecipeList(props) {
-    const {classes} = props;
+    const {classes, history} = props;
     const {cuisine} = props.match.params;
     const {dish} = props.match.params;
     const [recipes, setRecipes] = usePersistedState( `recipes-${dish}`, []);
@@ -22,9 +24,21 @@ function DishRecipeList(props) {
         setNextLink( data.nextLink);
         setIsLoading(false);
       }catch(e){
-        alert(`Can't fetch ${dish} recipes!`);
+        toast.error(`Can't Fetch ${dish} Recipes!`, {
+          position: "top-right",
+          autoclose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          toastId: "custom",
+          onClose: () => history.push("/")
+        });
+        //setIsLoading(false);
+
       }
-    }, [dish, nextLink, setNextLink, setRecipes]);
+    }, [dish, nextLink, setNextLink, setRecipes, history]);
 
     useEffect(()=> { 
         const fetchRecipes = async () => {
@@ -42,6 +56,7 @@ function DishRecipeList(props) {
     return (
         <div className={classes.root}>
           <div className={classes.contentContainer}>
+            <ToastContainer/>
             <h2 className={classes.title}>
               {`${dish} Recipes`}
             </h2>

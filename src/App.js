@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
 import Home from "./components/Home";
 import Cuisine from "./components/Cuisine";
 import Dish from "./components/Dish";

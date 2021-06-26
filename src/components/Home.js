@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import { withStyles } from "@material-ui/styles";
 import RestaurantIcon from "@material-ui/icons/Restaurant";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -25,9 +26,6 @@ function Home(props) {
     canGetRecipe: false
   });
 
-  const usernameLink = `https://unsplash.com/@${bgImg.username}?utm_source=foodpickerapp&utm_medium=referral`;
-  const unsplashLink = "https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral";
-
   const getFood = async () => {
     setIsLoading(true);
     const item = getRandomItem(foods);
@@ -41,6 +39,16 @@ function Home(props) {
         const data = await getCuisinePhoto(cuisine);
         dealWithPhotoData(data, dish);
       } catch (e) {
+        toast.error(`Can't Load Food Pic!`, {
+          position: "top-right",
+          autoclose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          toastId: "custom"
+      });
         setBgImg({ url: background, luminance: 1, desc: "", user: "Brooke Lark", username: "brookelark", title: "", canGetRecipe: false});
       }
     }
@@ -67,7 +75,7 @@ function Home(props) {
   const styles = {
     backgroundImage: `url(${bgImg.url})`,
     color: textColor,
-    textShadow: "2px 2px grey",
+    textShadow: "1px 1px grey",
   };
 
   const cuisineObj = {
@@ -78,7 +86,7 @@ function Home(props) {
   };
 
   const dishObj = {
-    pathname: `/${cuisine}/${dish}`,
+    pathname: bgImg.canGetRecipe ? `/${cuisine}/${dish}` : "#",
     dishProps: {
       dishInfo: bgImg,
       cuisine: cuisine,
@@ -93,6 +101,7 @@ function Home(props) {
 
   return (
     <div className={classes.Home} style={styles}>
+      <ToastContainer />
       <div>
         <h1 className={classes.title}>What To Eat?</h1>
         {icon}
@@ -101,13 +110,13 @@ function Home(props) {
         <Link to={cuisineObj} className={classes.link}>
           <h2 className={classes.cuisine}>{cuisine}</h2>
         </Link>
-        <Link to={dishObj} className={classes.link}>
+        {bgImg.canGetRecipe ? <Link to={dishObj} className={classes.link}>
           <h3 className={classes.dish}>{dish}</h3>
-        </Link>
+        </Link>: <h3 className={classes.disabledDish}>{dish}</h3>}
       </div>
       <h6 className={classes.hrefLink}>
-        Photo by <a href={usernameLink}>{bgImg.user}</a> on
-        <a href={unsplashLink}> Unsplash</a>
+        Photo by <a href={`https://unsplash.com/@${bgImg.username}?utm_source=foodpickerapp&utm_medium=referral`}>{bgImg.user}</a> on
+        <a href="https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral"> Unsplash</a>
       </h6>
     </div>
   );
