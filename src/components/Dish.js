@@ -29,19 +29,19 @@ function Dish(props) {
   };
   
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-testid="dish">
       <ToastContainer/>
       {
         dishInfo && 
       <div className={classes.contentContainer}>
-        <h2 className={classes.title} onClick={handleSearch}>
+        <h2 className={classes.title} onClick={handleSearch} data-testid="title">
           {dishInfo.title}
         </h2>
         <h4>{dishInfo.desc}</h4>
         {dishInfo.canGetRecipe && <Link to={`/recipelist/${cuisine}/${dishInfo.title}`}>
             <button className={classes.recipeButton}>Get Recipes</button>
         </Link>}
-        <img className={classes.img} src={dishInfo.url} alt={dishInfo.alt} />
+        <img className={classes.img} src={dishInfo.url} alt={dishInfo.alt} data-testid="img"/>
         <h6>
           Photo by <a href={`https://unsplash.com/@${dishInfo.username}?utm_source=foodpickerapp&utm_medium=referral`}>{dishInfo.user}</a> on
           <a href="https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral"> Unsplash</a>

@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="Dish-root-9"
+  data-testid="dish"
+>
+  <div
+    className="Toastify"
+  />
+  <div
+    className="Dish-contentContainer-10"
+  >
+    <h2
+      className="Dish-title-11"
+      data-testid="title"
+      onClick={[Function]}
+    >
+      gritsss
+    </h2>
+    <h4 />
+    <a
+      href="/recipelist/american/gritsss"
+      onClick={[Function]}
+    >
+      <button
+        className="Dish-recipeButton-12"
+      >
+        Get Recipes
+      </button>
+    </a>
+    <img
+      className="Dish-img-13"
+      data-testid="img"
+      src="testurl"
+    />
+    <h6>
+      Photo by 
+      <a
+        href="https://unsplash.com/@undefined?utm_source=foodpickerapp&utm_medium=referral"
+      />
+       on
+      <a
+        href="https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral"
+      >
+         Unsplash
+      </a>
+    </h6>
+    <div
+      className="Dish-buttonDiv-14"
+    >
+      <a
+        href="/american"
+        onClick={[Function]}
+      >
+        <button
+          className="Dish-button1-15"
+        >
+          american
+           food
+        </button>
+      </a>
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        <button
+          className="Dish-button2-16"
+        >
+          home
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+`;

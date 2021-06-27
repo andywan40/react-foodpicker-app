@@ -49,10 +49,10 @@ function Cuisine(props) {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-testid="cuisine">
       <div className={classes.contentContainer}>
         <ToastContainer />
-        <h2 className={classes.title} onClick={handleSearch}>
+        <h2 className={classes.title} onClick={handleSearch} data-testid="title">
           {cuisine} Food
         </h2>
         {!isLoading && <Link to={`/recipelist/cuisine/${cuisine}`}>

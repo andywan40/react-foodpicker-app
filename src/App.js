@@ -12,7 +12,7 @@ import Page from "./components/Page";
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
+    <div className="App" data-testid="app">
       <Switch>
         <Route
           exact
