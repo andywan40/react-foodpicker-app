@@ -54,9 +54,6 @@ function Cuisine({classes, match}) {
         <h2 className={classes.title} onClick={handleSearch} data-testid="title">
           {cuisine} Food
         </h2>
-        {!isLoading && <Link to={`/recipelist/cuisine/${cuisine}`}>
-            <button className={classes.recipeButton}>Get Recipes</button>
-        </Link>}
         <div className={classes.gridContainer}>
           {dishes.map((dish) => {
             const dishTitle = dish?.description?.length < 60 ? dish.description : dish.alt_description;
@@ -101,8 +98,11 @@ function Cuisine({classes, match}) {
           >
             load more
           </button>
-          <Link to="/">
-            <button className={classes.button2}>home</button>
+          <Link to={`/recipelist/cuisine/${cuisine}`} className={classes.button2}>
+            Get Recipes
+          </Link>
+          <Link to="/" className={classes.button2}>
+            home
           </Link>
         </div>}
       </div>

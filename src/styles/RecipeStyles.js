@@ -99,5 +99,8 @@ const styles = {
       padding: "6px 15px",
     },
   },
+  cuisineText: {
+    textTransform: 'capitalize'
+  }
 };
 export default styles;

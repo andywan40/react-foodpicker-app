@@ -38,16 +38,16 @@ function Recipe({classes, location, history, match}) {
                   {recipe.ingredientLines.map( ingredient => <li key={ingredient}>{ingredient}</li>)}
               </ul>
           </div>
-          <div className={classes.section}>
+          { recipe.dietLabels && <div className={classes.section}>
               <h4>diet labels</h4>
               <ul>
                   {recipe.dietLabels.map( label => <li key={label}>{label}</li>)}
               </ul>
-          </div>
+          </div> }
           <div className={classes.section}>
               <h4>cuisine</h4>
               <ul>
-                  {[recipe.cuisine].map( cuisine => <li key={cuisine}>{cuisine}</li>)}
+                  {[recipe.cuisine].map( cuisine => <li key={cuisine} className={classes.cuisineText}>{cuisine}</li>)}
               </ul>
           </div>
           <div className={classes.section}>

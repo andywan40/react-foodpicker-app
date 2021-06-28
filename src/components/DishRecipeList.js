@@ -85,11 +85,11 @@ function DishRecipeList({classes, history, match}) {
               >
                 load more
               </button>
-              <Link to={`/${cuisine}/${dish}`}>
-                <button className={classes.button1}>{dish}</button>
+              <Link to={`/${cuisine}/${dish}`} className={classes.button2}>
+                {dish}
               </Link>
-              <Link to="/">
-                <button className={classes.button2}>home</button>
+              <Link to="/" className={classes.button2}>
+                home
               </Link>
             </div>}
           </div>

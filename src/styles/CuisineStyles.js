@@ -28,57 +28,7 @@ const styles = {
       cursor: "pointer",
       textDecoration: "underline",
     },
-  },
-  recipeButton: {
-    marginBottom: "2rem",
-    color: "white",
-    backgroundColor: "black",
-    padding: "10px 25px",
-    cursor: "pointer",
-    borderRadius: "5px",
-    textTransform: "uppercase",
-  },
-  buttonDiv: {
-    marginTop: "1rem",
-    marginBottom: "2rem",
-    [sizes.down("sm")]: {
-      marginTop: "2rem",
-      marginBottom: "4rem",
-    },
-    [sizes.down("phone")]: {
-      marginTop: "2rem",
-      marginBottom: "6rem",
-    },
-  },
-  button1: {
-    color: "white",
-    backgroundColor: "black",
-    padding: "20px 45px",
-    textTransform: "uppercase",
-    cursor: "pointer",
-    borderRadius: "5px",
-    fontWeight: 800,
-    marginRight: "1rem",
-    [sizes.down("sm")]: {
-      padding: "10px 25px",
-    },
-    "&:disabled": {
-      cursor: "not-allowed",
-      opacity: "0.7"
-    }
-  },
-  button2: {
-    color: "white",
-    backgroundColor: "black",
-    padding: "20px 45px",
-    textTransform: "uppercase",
-    cursor: "pointer",
-    borderRadius: "5px",
-    fontWeight: 800,
-    [sizes.down("sm")]: {
-      padding: "10px 25px",
-    },
-  },
+  }, 
   gridContainer: {
     boxSizing: "border-box",
     width: "100%",
@@ -127,6 +77,56 @@ const styles = {
     transform: "translate(-50%, -50%)",
     "-ms-transform": "translate(-50%, -50%)",
     textAlign: "center",
+  },
+   buttonDiv: {
+    boxSizing: "border-box",
+    width: "70%",
+    marginTop: "1rem",
+    marginBottom: "2rem",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 30%)",
+    gridGap: "0.8rem",
+    justifyContent: "center",
+    [sizes.down("md")]: {
+      gridTemplateColumns: "repeat(1, 100%)",
+      width: "50%",
+    },
+  },
+  button1: {
+    color: "white",
+    backgroundColor: "black",
+    padding: "20px 45px",
+    textTransform: "uppercase",
+    cursor: "pointer",
+    borderRadius: "5px",
+    fontWeight: 700,
+    fontSize: "1rem",
+    fontFamily: "'Mate SC', serif",
+    [sizes.down("sm")]: {
+      padding: "10px 25px",
+    },
+    "&:disabled": {
+      cursor: "not-allowed",
+      opacity: "0.7"
+    }
+  },
+  button2: {
+    color: "white",
+    backgroundColor: "black",
+    padding: "20px 45px",
+    textTransform: "uppercase",
+    textDecoration: "none",
+    cursor: "pointer",
+    borderRadius: "5px",
+    fontWeight: 700,
+    fontSize: "1rem",
+    fontFamily: "'Mate SC', serif",
+    [sizes.down("sm")]: {
+      padding: "10px 25px",
+    },
+    display: "flex",
+    alignItems:"center",
+    justifyContent: "center"
   },
 };
 export default styles;

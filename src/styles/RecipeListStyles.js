@@ -20,6 +20,22 @@ const styles = {
       width: "85%",
     },
   },
+  gridContainer: {
+    boxSizing: "border-box",
+    width: "100%",
+    marginTop: "1rem",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 30%)",
+    gridGap: "2rem",
+    justifyContent: "center",
+    [sizes.down("md")]: {
+      gridTemplateColumns: "repeat(2, 50%)",
+    },
+    [sizes.down("sm")]: {
+      gridTemplateColumns: "repeat(1, 100%)",
+      gridGap: "1.4rem",
+    },
+  },
   title: {
     marginBottom: "1rem",
     fontFamily: "cursive",
@@ -48,15 +64,17 @@ const styles = {
     textTransform: "uppercase",
   },
   buttonDiv: {
+    boxSizing: "border-box",
+    width: "70%",
     marginTop: "1rem",
     marginBottom: "2rem",
-    [sizes.down("sm")]: {
-      marginTop: "2rem",
-      marginBottom: "4rem",
-    },
-    [sizes.down("phone")]: {
-      marginTop: "2rem",
-      marginBottom: "6rem",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 30%)",
+    gridGap: "0.8rem",
+    justifyContent: "center",
+    [sizes.down("md")]: {
+      gridTemplateColumns: "repeat(1, 100%)",
+      width: "50%",
     },
   },
   button1: {
@@ -66,8 +84,9 @@ const styles = {
     textTransform: "uppercase",
     cursor: "pointer",
     borderRadius: "5px",
-    fontWeight: 800,
-    marginRight: "1rem",
+    fontWeight: 700,
+    fontSize: "1rem",
+    fontFamily: "'Mate SC', serif",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
@@ -81,28 +100,18 @@ const styles = {
     backgroundColor: "black",
     padding: "20px 45px",
     textTransform: "uppercase",
+    textDecoration: "none",
     cursor: "pointer",
     borderRadius: "5px",
-    fontWeight: 800,
+    fontWeight: 700,
+    fontSize: "1rem",
+    fontFamily: "'Mate SC', serif",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
-  },
-  gridContainer: {
-    boxSizing: "border-box",
-    width: "100%",
-    marginTop: "1rem",
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 30%)",
-    gridGap: "2rem",
-    justifyContent: "center",
-    [sizes.down("md")]: {
-      gridTemplateColumns: "repeat(2, 50%)",
-    },
-    [sizes.down("sm")]: {
-      gridTemplateColumns: "repeat(1, 100%)",
-      gridGap: "1.4rem",
-    },
+    display: "flex",
+    alignItems:"center",
+    justifyContent: "center"
   },
 };
 export default styles;
