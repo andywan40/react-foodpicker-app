@@ -4,10 +4,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import { withStyles } from "@material-ui/styles";
 import styles from "../styles/DishStyles";
 
-function Dish(props) {
-  const { classes, history } = props;
-  const { cuisine, dish} = props.match.params;
-  const dishInfo = props.location?.dishProps?.dishInfo || JSON.parse(sessionStorage.getItem(`${dish.toLowerCase()}-dishInfo`));
+function Dish({classes, history, match, location}) {
+  const { cuisine, dish} = match.params;
+  const dishInfo = location?.dishProps?.dishInfo || JSON.parse(sessionStorage.getItem(`${dish.toLowerCase()}-dishInfo`));
   if(!dishInfo){
     toast.error(`Can't Fetch ${dish} Data`, {
           position: "top-right",

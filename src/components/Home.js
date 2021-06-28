@@ -11,8 +11,7 @@ import { getDishPhoto, getCuisinePhoto } from "../apis/home";
 import styles from "../styles/HomeStyles";
 import background from "../images/homebg.jpg";
 
-function Home(props) {
-  const { classes } = props;
+function Home({classes}) {
   const [cuisine, setCuisine] = useState("");
   const [dish, setDish] = useState("");
   const [isLoading, setIsLoading] = useState(false);

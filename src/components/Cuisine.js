@@ -7,9 +7,8 @@ import styles from "../styles/CuisineStyles";
 import { getCuisinePhotos } from "../apis/cuisine";
 import usePersistedState from "../hooks/usePersistedState";
 
-function Cuisine(props) {
-  const { classes } = props;
-  const {cuisine} = props.match.params;
+function Cuisine({classes, match}) {
+  const {cuisine} = match.params;
   const [dishes, setDishes] = usePersistedState(cuisine, []);
   const [currentPage, setCurrentPage] = usePersistedState(`currentPage-${cuisine}`, 1);
   const [totalPages, setTotalPages] = usePersistedState(`totalPages-${cuisine}`, 1000000);

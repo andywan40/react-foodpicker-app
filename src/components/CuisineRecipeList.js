@@ -9,9 +9,8 @@ import usePersistedState from "../hooks/usePersistedState";
 import RecipeItem from './RecipeItem';
 
 
-function CuisineRecipeList(props) {
-    const {classes, history} = props;
-    const {cuisine} = props.match.params;
+function CuisineRecipeList({classes, history, match}) {
+    const {cuisine} = match.params;
     const [recipes, setRecipes] = usePersistedState( `recipes-${cuisine}`, []);
     const [nextLink, setNextLink] = usePersistedState( `nextLink-${cuisine}` , "");
     const [isLoading, setIsLoading] = useState(false);
