@@ -22,7 +22,7 @@ const styles = {
   },
   title: {
     marginBottom: "1rem",
-    fontFamily: "cursive",
+    fontFamily: "'Days One', sans-serif",
     textTransform: "capitalize",
     "&:hover": {
       cursor: "pointer",
@@ -78,7 +78,7 @@ const styles = {
     "-ms-transform": "translate(-50%, -50%)",
     textAlign: "center",
   },
-   buttonDiv: {
+  buttonDiv: {
     boxSizing: "border-box",
     width: "70%",
     marginTop: "1rem",

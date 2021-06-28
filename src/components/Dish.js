@@ -20,12 +20,18 @@ function Dish({classes, history, match, location}) {
           onClose: () => history.push("/")
     });
   }
+
   useEffect(()=> {
     sessionStorage.setItem(`${dish.toLowerCase()}-dishInfo`, JSON.stringify(dishInfo));
   }, [dishInfo, dish])
+
   const handleSearch = () => {
     window.open(`https://www.google.com/search?q=${dishInfo.title}+near+me`);
   };
+
+  const buttonDivStyles = !dishInfo?.canGetRecipe? {
+    gridTemplateColumns: "repeat(2, 40%)",
+  } : {};
   
   return (
     <div className={classes.root} data-testid="dish">
@@ -36,21 +42,21 @@ function Dish({classes, history, match, location}) {
         <h2 className={classes.title} onClick={handleSearch} data-testid="title">
           {dishInfo.title}
         </h2>
-        <h4>{dishInfo.desc}</h4>
-        {dishInfo.canGetRecipe && <Link to={`/recipelist/${cuisine}/${dishInfo.title}`}>
-            <button className={classes.recipeButton}>Get Recipes</button>
-        </Link>}
+        <h4 className={classes.desc}>{dishInfo.desc}</h4>
         <img className={classes.img} src={dishInfo.url} alt={dishInfo.alt} data-testid="img"/>
         <h6>
           Photo by <a href={`https://unsplash.com/@${dishInfo.username}?utm_source=foodpickerapp&utm_medium=referral`}>{dishInfo.user}</a> on
           <a href="https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral"> Unsplash</a>
         </h6>
-        <div className={classes.buttonDiv}>
-          <Link to={`/${cuisine}`}>
-            <button className={classes.button1}>{cuisine} food</button>
+        <div className={classes.buttonDiv} style={buttonDivStyles}>
+          <Link to={`/${cuisine}`} className={classes.button1}>
+            {cuisine} food
           </Link>
-          <Link to="/">
-            <button className={classes.button2}>home</button>
+          {dishInfo.canGetRecipe && <Link to={`/recipelist/${cuisine}/${dishInfo.title}`} className={classes.button2}>
+            Get Recipes
+          </Link>}
+          <Link to="/" className={classes.button2}>
+            home
           </Link>
         </div>
       </div>

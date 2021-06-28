@@ -38,7 +38,7 @@ const styles = {
   },
   title: {
     marginBottom: "1rem",
-    fontFamily: "cursive",
+    fontFamily: "'Days One', sans-serif",
     textTransform: "capitalize",
     "&:hover": {
       cursor: "pointer",

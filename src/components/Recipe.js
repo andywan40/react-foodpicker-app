@@ -23,7 +23,7 @@ function Recipe({classes, location, history, match}) {
         onClose: () => history.push("/")
       });
     }
-    
+
     return (
     <div className={classes.root}>
       <ToastContainer />
@@ -38,7 +38,7 @@ function Recipe({classes, location, history, match}) {
                   {recipe.ingredientLines.map( ingredient => <li key={ingredient}>{ingredient}</li>)}
               </ul>
           </div>
-          { recipe.dietLabels && <div className={classes.section}>
+          { recipe.dietLabels.length !== 0 && <div className={classes.section}>
               <h4>diet labels</h4>
               <ul>
                   {recipe.dietLabels.map( label => <li key={label}>{label}</li>)}
@@ -59,9 +59,7 @@ function Recipe({classes, location, history, match}) {
           <img className={classes.img} src={recipe.image} alt={recipe.title} />
           <div className={classes.buttonDiv}>
             <button className={classes.button1} onClick={()=> history.goBack()}>go back</button>
-            <Link to="/">
-              <button className={classes.button2}>home page</button>
-            </Link>
+            <Link to="/" className={classes.button2}>home</Link>
           </div>
         </div>
       }

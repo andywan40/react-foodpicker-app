@@ -53,19 +53,26 @@ const styles = {
     borderTop: "1px solid black",
     width: "60%",
   },
+  cuisineText: {
+    textTransform: 'capitalize'
+  },
   img: {
     borderRadius: "5px",
     height: "50%",
     width: "50%",
   },
   buttonDiv: {
+    boxSizing: "border-box",
+    width: "70%",
     marginTop: "1rem",
     marginBottom: "2rem",
-    [sizes.down("sm")]: {
-      marginBottom: "4rem",
-    },
-    [sizes.down("phone")]: {
-      marginBottom: "6rem",
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 30%)",
+    gridGap: "0.8rem",
+    justifyContent: "center",
+    [sizes.down("md")]: {
+      gridTemplateColumns: "repeat(1, 60%)",
+      width: "50%",
     },
   },
   button1: {
@@ -75,8 +82,9 @@ const styles = {
     textTransform: "uppercase",
     cursor: "pointer",
     borderRadius: "5px",
-    fontWeight: 800,
-    marginRight: "1rem",
+    fontWeight: 700,
+    fontSize: "1rem",
+    fontFamily: "'Mate SC', serif",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
@@ -89,18 +97,21 @@ const styles = {
     backgroundColor: "black",
     padding: "20px 45px",
     textTransform: "uppercase",
+    textDecoration: "none",
     cursor: "pointer",
     borderRadius: "5px",
-    fontWeight: 800,
+    fontWeight: 700,
+    fontSize: "1rem",
+    fontFamily: "'Mate SC', serif",
+    display: "flex",
+    alignItems:"center",
+    justifyContent: "center",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
     [sizes.down("phone")]: {
       padding: "6px 15px",
     },
-  },
-  cuisineText: {
-    textTransform: 'capitalize'
   }
 };
 export default styles;
