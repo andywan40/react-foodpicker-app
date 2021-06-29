@@ -8,7 +8,6 @@ function RecipeItem({classes, recipe}) {
     return (
         <Link
             className={classes.imageContainer}
-            key={title}
             to={{
                 pathname: `/recipe/${cuisine}/${title}`,
                 recipe

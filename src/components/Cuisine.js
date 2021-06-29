@@ -6,6 +6,7 @@ import { withStyles } from "@material-ui/styles";
 import styles from "../styles/CuisineStyles";
 import { getCuisinePhotos } from "../apis/cuisine";
 import usePersistedState from "../hooks/usePersistedState";
+import CuisineItem from "./CuisineItem";
 
 function Cuisine({classes, match}) {
   const {cuisine} = match.params;
@@ -57,36 +58,21 @@ function Cuisine({classes, match}) {
         <div className={classes.gridContainer}>
           {dishes.map((dish) => {
             const dishTitle = dish?.description?.length < 60 ? dish.description : dish.alt_description;
-            dish["alt_description"] = dish["alt_description"] || `${cuisine} Food`;
+            //dish["alt_description"] = dish["alt_description"] || `${cuisine} Food`;
+            const dishProps = {
+              dishInfo: {
+                url: dish.urls.regular,
+                luminance: 1,
+                title: dishTitle,
+                desc: dish["alt_description"] || `${cuisine} Food`,
+                user: dish.user.name,
+                username: dish.user.username,
+                tags: dish.tags
+              },
+              cuisine: cuisine,
+            } 
             return (
-              <Link
-                className={classes.imageContainer}
-                key={nanoid()} //british food photos have duplicate keys
-                to={{
-                  pathname: `/${cuisine}/${dish["alt_description"]}`,
-                  dishProps: {
-                    dishInfo: {
-                      url: dish.urls.regular,
-                      luminance: 1,
-                      title: dishTitle,
-                      desc: dish["alt_description"],
-                      user: dish.user.name,
-                      username: dish.user.username,
-                      tags: dish.tags
-                    },
-                    cuisine: cuisine,
-                  },
-                }}
-              >
-                <img
-                  className={classes.dishImg}
-                  src={dish.urls.regular}
-                  alt={dish.description}
-                />
-                <div className={classes.dishImgText}>
-                  {dishTitle}
-                </div>
-              </Link>
+              <CuisineItem key={nanoid()} dishProps={dishProps}/>
             );
           })}
         </div>

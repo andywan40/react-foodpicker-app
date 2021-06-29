@@ -19,7 +19,6 @@ const foods = [
       "sukiyaki",
       "miso soup",
       "okonomiyaki",
-      "mentaiko",
       "nikujaga",
       "curry rice",
       "unagi no kabayaki",
