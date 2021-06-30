@@ -53,7 +53,7 @@ const styles = {
     boxSizing: "border-box",
     width: "70%",
     marginTop: "1rem",
-    marginBottom: "2rem",
+    marginBottom: "4rem",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",
     gridGap: "0.8rem",
@@ -74,11 +74,19 @@ const styles = {
     fontWeight: 700,
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
+    display: "flex",
+    alignItems:"center",
+    justifyContent: "center",
+    [sizes.down("md")]: {
+      fontSize: "0.8rem"
+    },
     [sizes.down("sm")]: {
       padding: "10px 25px",
+      fontSize: "0.55rem"
     },
     [sizes.down("phone")]: {
       padding: "6px 15px",
+      fontSize: "0.5rem"
     },
   },
   button2: {
@@ -95,11 +103,16 @@ const styles = {
     display: "flex",
     alignItems:"center",
     justifyContent: "center",
+    [sizes.down("md")]: {
+      fontSize: "0.8rem"
+    },
     [sizes.down("sm")]: {
       padding: "10px 25px",
+      fontSize: "0.55rem"
     },
     [sizes.down("phone")]: {
       padding: "6px 15px",
+      fontSize: "0.5rem"
     },
   }
 };

@@ -30,7 +30,8 @@ function Dish({classes, history, match, location}) {
   };
 
   const buttonDivStyles = !dishInfo?.canGetRecipe? {
-    gridTemplateColumns: "repeat(2, 40%)",
+    gridTemplateColumns: "repeat(2, 60%)",
+
   } : {};
   
   return (

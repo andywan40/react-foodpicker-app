@@ -21,7 +21,7 @@ const styles = {
     },
   },
   title: {
-    marginBottom: "1rem",
+    marginBottom: "2rem",
     fontFamily: "'Days One', sans-serif",
     textTransform: "capitalize",
     "&:hover": {
@@ -47,8 +47,8 @@ const styles = {
   buttonDiv: {
     boxSizing: "border-box",
     width: "70%",
-    marginTop: "1rem",
-    marginBottom: "2rem",
+    marginTop: "3rem",
+    marginBottom: "6rem",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",
     gridGap: "0.8rem",
@@ -68,6 +68,9 @@ const styles = {
     fontWeight: 700,
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
+    display: "flex",
+    alignItems:"center",
+    justifyContent: "center",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
@@ -87,12 +90,12 @@ const styles = {
     fontWeight: 700,
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
-    [sizes.down("sm")]: {
-      padding: "10px 25px",
-    },
     display: "flex",
     alignItems:"center",
-    justifyContent: "center"
+    justifyContent: "center",
+    [sizes.down("sm")]: {
+      padding: "10px 25px",
+    }
   },
 };
 export default styles;
