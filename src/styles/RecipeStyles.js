@@ -65,7 +65,7 @@ const styles = {
     boxSizing: "border-box",
     width: "70%",
     marginTop: "3rem",
-    marginBottom: "4rem",
+    marginBottom: "6rem",
     display: "grid",
     gridTemplateColumns: "repeat(2, 30%)",
     gridGap: "0.8rem",

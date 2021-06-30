@@ -52,8 +52,8 @@ const styles = {
   buttonDiv: {
     boxSizing: "border-box",
     width: "70%",
-    marginTop: "1rem",
-    marginBottom: "4rem",
+    marginTop: "2rem",
+    marginBottom: "6rem",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",
     gridGap: "0.8rem",
