@@ -22,7 +22,6 @@ const styles = {
     [sizes.down("phone")]: {
       fontSize: "2.5rem",
     },
-    
   },
   icon: {
     color: "inherit",
@@ -37,12 +36,10 @@ const styles = {
     [sizes.down("phone")]: {
       fontSize: "2rem",
     },
-    
   },
   result: {
     marginTop: "2rem",
-    textTransform: "capitalize"
-    
+    textTransform: "capitalize",
   },
   link: {
     textDecoration: "none",
@@ -62,7 +59,7 @@ const styles = {
   },
   disabledDish: {
     textDecoration: "none",
-    cursor: "not-allowed"
+    cursor: "not-allowed",
   },
   hrefLink: {
     color: "inherit",
@@ -71,6 +68,6 @@ const styles = {
       color: "inherit",
       textDecoration: "underline",
     },
-  }
+  },
 };
 export default styles;

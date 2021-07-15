@@ -12,7 +12,7 @@ const styles = {
       },
     },
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   recipeImg: {
     width: "90%",

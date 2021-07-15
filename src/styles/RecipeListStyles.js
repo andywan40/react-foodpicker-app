@@ -52,7 +52,6 @@ const styles = {
     [sizes.down("phone")]: {
       fontSize: "2rem",
     },
-    
   },
   recipeButton: {
     marginBottom: "2rem",
@@ -92,8 +91,8 @@ const styles = {
     },
     "&:disabled": {
       cursor: "not-allowed",
-      opacity: "0.7"
-    }
+      opacity: "0.7",
+    },
   },
   button2: {
     color: "white",
@@ -110,8 +109,8 @@ const styles = {
       padding: "10px 25px",
     },
     display: "flex",
-    alignItems:"center",
-    justifyContent: "center"
+    alignItems: "center",
+    justifyContent: "center",
   },
 };
 export default styles;

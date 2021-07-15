@@ -12,7 +12,7 @@ const styles = {
       },
     },
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   dishImg: {
     width: "90%",

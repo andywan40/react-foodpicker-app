@@ -14,7 +14,7 @@ const styles = {
     marginBottom: "2.5rem",
     display: "flex",
     flexDirection: "column",
-    alignItems:"center",
+    alignItems: "center",
     width: "70vw",
     [sizes.down("md")]: {
       width: "80vw",
@@ -75,18 +75,18 @@ const styles = {
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
     display: "flex",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "center",
     [sizes.down("md")]: {
-      fontSize: "0.8rem"
+      fontSize: "0.8rem",
     },
     [sizes.down("sm")]: {
       padding: "10px 25px",
-      fontSize: "0.55rem"
+      fontSize: "0.55rem",
     },
     [sizes.down("phone")]: {
       padding: "6px 15px",
-      fontSize: "0.5rem"
+      fontSize: "0.5rem",
     },
   },
   button2: {
@@ -101,19 +101,19 @@ const styles = {
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
     display: "flex",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "center",
     [sizes.down("md")]: {
-      fontSize: "0.8rem"
+      fontSize: "0.8rem",
     },
     [sizes.down("sm")]: {
       padding: "10px 25px",
-      fontSize: "0.55rem"
+      fontSize: "0.55rem",
     },
     [sizes.down("phone")]: {
       padding: "6px 15px",
-      fontSize: "0.5rem"
+      fontSize: "0.5rem",
     },
-  }
+  },
 };
 export default styles;

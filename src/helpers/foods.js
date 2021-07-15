@@ -154,7 +154,7 @@ const foods = [
       "shepherd's pie",
       "beef wellington",
       "afternoon tea",
-      "cornish pasty"
+      "cornish pasty",
     ],
   },
   {
@@ -198,10 +198,17 @@ const foods = [
       "wine",
     ],
   },
-  
 ];
 
 export const cuisines = [
-  "japanese", "american", "chinese", "indian", "italian", "mexican", "british","french", "mediterranean"
+  "japanese",
+  "american",
+  "chinese",
+  "indian",
+  "italian",
+  "mexican",
+  "british",
+  "french",
+  "mediterranean",
 ];
 export default foods;

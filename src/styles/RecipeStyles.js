@@ -14,7 +14,7 @@ const styles = {
     marginBottom: "2.5rem",
     display: "flex",
     flexDirection: "column",
-    alignItems:"center",
+    alignItems: "center",
     width: "70vw",
     [sizes.down("md")]: {
       width: "80vw",
@@ -29,7 +29,7 @@ const styles = {
     fontSize: "2rem",
     "& a": {
       textDecoration: "none",
-      color: "black"
+      color: "black",
     },
     "&:hover": {
       cursor: "pointer",
@@ -44,7 +44,7 @@ const styles = {
       textTransform: "uppercase",
       marginTop: "0.5rem",
       marginBottom: "0.5rem",
-      color:"#3f506e"
+      color: "#3f506e",
     },
     "& li": {
       textAlign: "start",
@@ -54,7 +54,7 @@ const styles = {
     width: "60%",
   },
   cuisineText: {
-    textTransform: 'capitalize'
+    textTransform: "capitalize",
   },
   img: {
     borderRadius: "5px",
@@ -104,7 +104,7 @@ const styles = {
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
     display: "flex",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "center",
     [sizes.down("sm")]: {
       padding: "10px 25px",
@@ -112,6 +112,6 @@ const styles = {
     [sizes.down("phone")]: {
       padding: "6px 15px",
     },
-  }
+  },
 };
 export default styles;

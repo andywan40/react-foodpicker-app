@@ -28,7 +28,7 @@ const styles = {
       cursor: "pointer",
       textDecoration: "underline",
     },
-  }, 
+  },
   gridContainer: {
     boxSizing: "border-box",
     width: "100%",
@@ -69,15 +69,15 @@ const styles = {
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
     display: "flex",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "center",
     [sizes.down("sm")]: {
       padding: "10px 25px",
     },
     "&:disabled": {
       cursor: "not-allowed",
-      opacity: "0.7"
-    }
+      opacity: "0.7",
+    },
   },
   button2: {
     color: "white",
@@ -91,11 +91,11 @@ const styles = {
     fontSize: "1rem",
     fontFamily: "'Mate SC', serif",
     display: "flex",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "center",
     [sizes.down("sm")]: {
       padding: "10px 25px",
-    }
+    },
   },
 };
 export default styles;

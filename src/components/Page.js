@@ -1,8 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import "../styles/Page.css";
-import {cuisines} from "../helpers/foods";
+import { cuisines } from "../helpers/foods";
 
 function Page({ children }) {
   const history = useHistory();
@@ -17,9 +17,13 @@ function Page({ children }) {
       draggable: true,
       progress: undefined,
       toastId: "custom",
-      onClose: () => history.push("/")
+      onClose: () => history.push("/"),
     });
-    return <section><ToastContainer /></section>;
+    return (
+      <section>
+        <ToastContainer />
+      </section>
+    );
   }
   return <section className="Page">{children}</section>;
 }

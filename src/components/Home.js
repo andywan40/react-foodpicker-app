@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import { withStyles } from "@material-ui/styles";
 import RestaurantIcon from "@material-ui/icons/Restaurant";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -11,7 +11,7 @@ import { getDishPhoto, getCuisinePhoto } from "../apis/home";
 import styles from "../styles/HomeStyles";
 import background from "../images/homebg.jpg";
 
-function Home({classes}) {
+function Home({ classes }) {
   const [cuisine, setCuisine] = useState("");
   const [dish, setDish] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +22,7 @@ function Home({classes}) {
     desc: "",
     user: "Brooke Lark",
     username: "brookelark",
-    canGetRecipe: false
+    canGetRecipe: false,
   });
 
   const getFood = async () => {
@@ -46,9 +46,17 @@ function Home({classes}) {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          toastId: "custom"
-      });
-        setBgImg({ url: background, luminance: 1, desc: "", user: "Brooke Lark", username: "brookelark", title: "", canGetRecipe: false});
+          toastId: "custom",
+        });
+        setBgImg({
+          url: background,
+          luminance: 1,
+          desc: "",
+          user: "Brooke Lark",
+          username: "brookelark",
+          title: "",
+          canGetRecipe: false,
+        });
       }
     }
     setCuisine(cuisine);
@@ -66,7 +74,7 @@ function Home({classes}) {
       desc: photo.alt_description,
       user: photo.user.name,
       username: photo.user.username,
-      canGetRecipe: true
+      canGetRecipe: true,
     });
   };
 
@@ -109,13 +117,26 @@ function Home({classes}) {
         <Link to={cuisineObj} className={classes.link}>
           <h2 className={classes.cuisine}>{cuisine}</h2>
         </Link>
-        {bgImg.canGetRecipe ? <Link to={dishObj} className={classes.link}>
-          <h3 className={classes.dish}>{dish}</h3>
-        </Link>: <h3 className={classes.disabledDish}>{dish}</h3>}
+        {bgImg.canGetRecipe ? (
+          <Link to={dishObj} className={classes.link}>
+            <h3 className={classes.dish}>{dish}</h3>
+          </Link>
+        ) : (
+          <h3 className={classes.disabledDish}>{dish}</h3>
+        )}
       </div>
       <h6 className={classes.hrefLink}>
-        Photo by <a href={`https://unsplash.com/@${bgImg.username}?utm_source=foodpickerapp&utm_medium=referral`}>{bgImg.user}</a> on
-        <a href="https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral"> Unsplash</a>
+        Photo by{" "}
+        <a
+          href={`https://unsplash.com/@${bgImg.username}?utm_source=foodpickerapp&utm_medium=referral`}
+        >
+          {bgImg.user}
+        </a>{" "}
+        on
+        <a href="https://unsplash.com/?utm_source=foodpickerapp&utm_medium=referral">
+          {" "}
+          Unsplash
+        </a>
       </h6>
     </div>
   );
